@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="DSIETE – Creăm site-uri profesionale pentru afaceri locale la doar 400 lei. Sună acum: 0759 357 054." />
+  <meta name="keywords" content="creare site web, site profesional, site afaceri locale, web design Romania, 400 lei" />
+  <meta property="og:title" content="DSIETE – Site-uri profesionale pentru afaceri locale" />
+  <meta property="og:description" content="Creăm site-uri moderne, rapide și optimizate la doar 400 lei. Contactează-ne azi." />
+  <title>DSIETE – Site-uri Profesionale pentru Afaceri Locale</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #1E3A8A;
+      --navy-dark: #162d6e;
+      --blue: #3B82F6;
+      --blue-light: #60A5FA;
+      --blue-pale: #DBEAFE;
+      --white: #FFFFFF;
+      --gray-light: #F3F4F6;
+      --gray-mid: #E5E7EB;
+      --gray-text: #6B7280;
+      --gray-dark: #374151;
+      --black: #111827;
+      --font-display: 'Plus Jakarta Sans', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+      --shadow-md: 0 4px 20px rgba(30,58,138,0.10);
+      --shadow-lg: 0 12px 40px rgba(30,58,138,0.16);
+      --radius: 14px;
+      --radius-sm: 8px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--black);
+      background: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--gray-mid);
+      padding: 0 5%;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+      transition: box-shadow 0.3s;
+    }
+    nav.scrolled { box-shadow: var(--shadow-md); }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.5rem; font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -0.5px;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--blue); }
+
+    .nav-cta {
+      background: var(--navy);
+      color: var(--white);
+      padding: 10px 22px;
+      border-radius: 50px;
+      font-weight: 600; font-size: 0.9rem;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+      white-space: nowrap;
+    }
+    .nav-cta:hover { background: var(--blue); transform: translateY(-1px); }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(145deg, var(--navy) 0%, #1a4db8 55%, #2563EB 100%);
+      display: flex; align-items: center;
+      padding: 100px 5% 80px;
+      position: relative; overflow: hidden;
+    }
+
+    /* Grid overlay */
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    /* Glow blobs */
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(96,165,250,0.25) 0%, transparent 70%);
+      top: -100px; right: -100px;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 1200px; margin: 0 auto; width: 100%;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+      position: relative; z-index: 1;
+    }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: var(--blue-light);
+      padding: 6px 16px; border-radius: 50px;
+      font-size: 0.82rem; font-weight: 600; letter-spacing: 0.5px;
+      margin-bottom: 24px;
+    }
+    .hero-badge::before {
+      content: '';
+      display: inline-block; width: 7px; height: 7px;
+      background: #4ADE80; border-radius: 50%;
+      animation: pulse-dot 2s infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.4); }
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      background: linear-gradient(90deg, #93C5FD, #60A5FA);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-sub {
+      color: rgba(255,255,255,0.75);
+      font-size: 1.15rem; line-height: 1.7;
+      margin-bottom: 36px;
+      max-width: 500px;
+    }
+
+    .hero-price {
+      display: inline-flex; align-items: baseline; gap: 6px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 10px;
+      padding: 10px 18px;
+      margin-bottom: 32px;
+    }
+    .hero-price .amount {
+      font-family: var(--font-display);
+      font-size: 2rem; font-weight: 800;
+      color: #FDE68A;
+    }
+    .hero-price .label { color: rgba(255,255,255,0.65); font-size: 0.9rem; }
+
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--white);
+      color: var(--navy);
+      padding: 15px 30px; border-radius: 50px;
+      font-weight: 700; font-size: 1rem;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+      transition: all 0.25s;
+    }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(0,0,0,0.3); }
+
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.1);
+      border: 1.5px solid rgba(255,255,255,0.35);
+      color: var(--white);
+      padding: 15px 30px; border-radius: 50px;
+      font-weight: 600; font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.25s;
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,0.18); transform: translateY(-3px); }
+
+    /* Hero phone mockup */
+    .hero-visual {
+      display: flex; justify-content: center; align-items: center;
+      position: relative;
+    }
+
+    .mockup-wrap {
+      position: relative;
+      animation: float 5s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-18px); }
+    }
+
+    .mockup-glow {
+      position: absolute; inset: -30px;
+      background: radial-gradient(circle, rgba(96,165,250,0.3) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .browser-mockup {
+      width: 340px;
+      background: var(--white);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+      position: relative;
+    }
+
+    .browser-bar {
+      background: #F3F4F6;
+      padding: 12px 16px;
+      display: flex; align-items: center; gap: 8px;
+      border-bottom: 1px solid var(--gray-mid);
+    }
+    .browser-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .browser-dot:nth-child(1) { background: #FC6058; }
+    .browser-dot:nth-child(2) { background: #FEC02F; }
+    .browser-dot:nth-child(3) { background: #2ACA44; }
+    .browser-url {
+      flex: 1; background: var(--white);
+      border-radius: 6px; height: 24px;
+      margin-left: 8px;
+      display: flex; align-items: center; padding: 0 10px;
+      font-size: 0.72rem; color: var(--gray-text);
+    }
+
+    .browser-content {
+      padding: 20px;
+    }
+    .mock-header {
+      background: linear-gradient(135deg, var(--navy), var(--blue));
+      border-radius: 8px; height: 70px; margin-bottom: 14px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .mock-logo { color: white; font-weight: 800; font-size: 1.1rem; font-family: var(--font-display); }
+    .mock-line { height: 10px; border-radius: 4px; background: var(--gray-mid); margin-bottom: 8px; }
+    .mock-line.w80 { width: 80%; }
+    .mock-line.w60 { width: 60%; }
+    .mock-line.w90 { width: 90%; }
+    .mock-btn {
+      margin-top: 14px; background: var(--blue);
+      height: 36px; border-radius: 20px; width: 60%;
+    }
+    .mock-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 14px; }
+    .mock-card { background: var(--gray-light); border-radius: 8px; height: 50px; }
+
+    /* ─── SECTION BASE ─── */
+    section { padding: 90px 5%; }
+
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+
+    .section-label {
+      display: inline-block;
+      background: var(--blue-pale);
+      color: var(--navy);
+      padding: 4px 14px; border-radius: 50px;
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+      font-weight: 800; color: var(--navy);
+      letter-spacing: -1px; line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .section-sub {
+      color: var(--gray-text);
+      font-size: 1.05rem; line-height: 1.7;
+      max-width: 560px;
+    }
+
+    .section-header { margin-bottom: 56px; }
+    .section-header.center { text-align: center; }
+    .section-header.center .section-sub { margin: 0 auto; }
+
+    /* ─── WHY SECTION ─── */
+    .why { background: var(--gray-light); }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+    }
+
+    .benefit-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--gray-mid);
+      transition: all 0.3s;
+      position: relative; overflow: hidden;
+    }
+
+    .benefit-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--navy), var(--blue));
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .benefit-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+      border-color: transparent;
+    }
+
+    .benefit-card:hover::before { opacity: 1; }
+
+    .benefit-icon {
+      width: 50px; height: 50px;
+      background: var(--blue-pale);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 18px;
+      font-size: 1.4rem;
+    }
+
+    .benefit-card h3 {
+      font-family: var(--font-display);
+      font-size: 1rem; font-weight: 700;
+      color: var(--navy); margin-bottom: 8px;
+    }
+
+    .benefit-card p { color: var(--gray-text); font-size: 0.9rem; line-height: 1.6; }
+
+    /* ─── WHAT YOU GET ─── */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .feature-card {
+      background: var(--white);
+      border: 1.5px solid var(--gray-mid);
+      border-radius: var(--radius);
+      padding: 30px;
+      display: flex; gap: 18px;
+      align-items: flex-start;
+      transition: all 0.3s;
+    }
+
+    .feature-card:hover {
+      border-color: var(--blue);
+      box-shadow: 0 8px 30px rgba(59,130,246,0.12);
+      transform: translateY(-3px);
+    }
+
+    .feature-check {
+      width: 40px; height: 40px; flex-shrink: 0;
+      background: linear-gradient(135deg, var(--navy), var(--blue));
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      color: white; font-size: 1rem;
+    }
+
+    .feature-card h3 {
+      font-family: var(--font-display);
+      font-size: 1rem; font-weight: 700;
+      color: var(--navy); margin-bottom: 6px;
+    }
+    .feature-card p { color: var(--gray-text); font-size: 0.88rem; line-height: 1.6; }
+
+    /* Price badge */
+    .price-badge-wrap { display: flex; justify-content: center; margin-bottom: 56px; }
+    .price-badge {
+      background: linear-gradient(135deg, var(--navy), var(--blue));
+      color: white;
+      padding: 20px 50px;
+      border-radius: 100px;
+      text-align: center;
+      box-shadow: 0 10px 40px rgba(30,58,138,0.3);
+    }
+    .price-badge .big { font-size: 2.5rem; font-weight: 900; font-family: var(--font-display); letter-spacing: -1px; }
+    .price-badge .small { font-size: 0.88rem; opacity: 0.75; margin-top: 2px; }
+
+    /* ─── HOW IT WORKS ─── */
+    .how { background: var(--navy); }
+    .how .section-title { color: var(--white); }
+    .how .section-sub { color: rgba(255,255,255,0.65); }
+    .how .section-label { background: rgba(255,255,255,0.12); color: var(--blue-light); }
+
+    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0; position: relative; }
+
+    .steps::before {
+      content: '';
+      position: absolute;
+      top: 38px; left: calc(12.5% + 20px); right: calc(12.5% + 20px);
+      height: 2px;
+      background: linear-gradient(90deg, var(--blue), rgba(96,165,250,0.3));
+      pointer-events: none;
+    }
+
+    .step {
+      text-align: center;
+      padding: 20px;
+      position: relative; z-index: 1;
+    }
+
+    .step-num {
+      width: 76px; height: 76px;
+      background: linear-gradient(135deg, var(--blue), #60A5FA);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1.6rem; font-weight: 800;
+      color: white;
+      margin: 0 auto 20px;
+      box-shadow: 0 8px 24px rgba(59,130,246,0.4);
+      position: relative;
+      border: 3px solid rgba(255,255,255,0.15);
+    }
+
+    .step h3 {
+      font-family: var(--font-display);
+      font-size: 1.05rem; font-weight: 700;
+      color: var(--white); margin-bottom: 8px;
+    }
+    .step p { color: rgba(255,255,255,0.6); font-size: 0.88rem; line-height: 1.6; }
+
+    /* ─── TESTIMONIALS ─── */
+    .testimonials { background: var(--gray-light); }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .testimonial {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 32px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--gray-mid);
+      transition: all 0.3s;
+      position: relative;
+    }
+
+    .testimonial:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+
+    .testimonial::before {
+      content: '"';
+      position: absolute; top: 20px; right: 24px;
+      font-size: 5rem; font-family: Georgia, serif;
+      color: var(--blue-pale);
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .stars {
+      color: #F59E0B;
+      font-size: 1rem; letter-spacing: 2px;
+      margin-bottom: 14px;
+    }
+
+    .testimonial p {
+      color: var(--gray-dark);
+      font-size: 0.95rem; line-height: 1.7;
+      font-style: italic;
+      margin-bottom: 20px;
+      position: relative; z-index: 1;
+    }
+
+    .testimonial-author { display: flex; align-items: center; gap: 12px; }
+
+    .author-avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--navy), var(--blue));
+      display: flex; align-items: center; justify-content: center;
+      color: white; font-weight: 700; font-size: 1rem;
+      font-family: var(--font-display);
+      flex-shrink: 0;
+    }
+
+    .author-info .name { font-weight: 700; font-size: 0.9rem; color: var(--navy); }
+    .author-info .role { font-size: 0.8rem; color: var(--gray-text); }
+
+    /* ─── CONTACT ─── */
+    .contact {
+      background: linear-gradient(145deg, var(--navy) 0%, #1a4db8 100%);
+      text-align: center; position: relative; overflow: hidden;
+    }
+
+    .contact::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    .contact .section-inner { position: relative; z-index: 1; }
+    .contact .section-title { color: var(--white); }
+    .contact .section-sub { color: rgba(255,255,255,0.7); margin: 0 auto 40px; }
+    .contact .section-label { background: rgba(255,255,255,0.12); color: var(--blue-light); }
+
+    .contact-phone {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 900; color: white;
+      letter-spacing: -1px;
+      margin-bottom: 36px;
+      display: block;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .contact-phone:hover { color: #93C5FD; }
+
+    .btn-cta-big {
+      display: inline-flex; align-items: center; gap: 12px;
+      background: var(--white);
+      color: var(--navy);
+      padding: 20px 48px; border-radius: 100px;
+      font-family: var(--font-display);
+      font-weight: 800; font-size: 1.15rem;
+      text-decoration: none;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+      transition: all 0.3s;
+    }
+    .btn-cta-big:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+    .btn-cta-big svg { flex-shrink: 0; }
+
+    .contact-sub-note {
+      margin-top: 20px;
+      color: rgba(255,255,255,0.5);
+      font-size: 0.85rem;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--black);
+      padding: 40px 5%;
+      text-align: center;
+    }
+
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 1.5rem; font-weight: 800;
+      color: var(--white); margin-bottom: 8px;
+    }
+    .footer-logo span { color: var(--blue); }
+
+    footer p { color: rgba(255,255,255,0.4); font-size: 0.85rem; margin-bottom: 4px; }
+    footer a { color: var(--blue-light); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    .footer-divider { margin: 20px auto; width: 60px; height: 1px; background: rgba(255,255,255,0.1); }
+
+    /* ─── STICKY PHONE ─── */
+    .sticky-phone {
+      position: fixed; bottom: 24px; right: 24px; z-index: 200;
+      display: flex; align-items: center; gap: 12px;
+      background: var(--blue);
+      color: white;
+      padding: 14px 22px; border-radius: 100px;
+      font-weight: 700; font-size: 0.95rem;
+      text-decoration: none;
+      box-shadow: 0 8px 30px rgba(59,130,246,0.45);
+      transition: all 0.3s;
+      animation: slide-in 0.6s 1s ease-out both;
+    }
+
+    .sticky-phone:hover { background: var(--navy); transform: translateY(-3px); }
+
+    @keyframes slide-in {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .sticky-phone-icon { animation: ring 3s 2s infinite; }
+    @keyframes ring {
+      0%, 90%, 100% { transform: rotate(0deg); }
+      92% { transform: rotate(-15deg); }
+      96% { transform: rotate(15deg); }
+    }
+
+    /* ─── SCROLL REVEAL ─── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; text-align: center; }
+      .hero-sub { margin: 0 auto 36px; }
+      .hero-actions { justify-content: center; }
+      .hero-visual { margin-top: 20px; }
+      .steps::before { display: none; }
+    }
+
+    @media (max-width: 600px) {
+      section { padding: 70px 5%; }
+      .browser-mockup { width: 280px; }
+      .hero-price { display: inline-flex; }
+      .sticky-phone span { display: none; }
+      .sticky-phone { padding: 14px; border-radius: 50%; width: 56px; height: 56px; justify-content: center; }
+      .btn-cta-big { padding: 16px 32px; font-size: 1rem; }
+      .steps { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .mockup-wrap { animation: none; }
+      .reveal { opacity: 1; transform: none; }
+      .sticky-phone-icon { animation: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <a href="#" class="nav-logo">D<span>SIETE</span></a>
+    <a href="tel:0759357054" class="nav-cta">📞 0759 357 054</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="acasa">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-badge">✦ Ofertă limitată</div>
+        <h1>Afacerea ta merită un site <em>profesionist.</em></h1>
+        <p class="hero-sub">Creăm site-uri moderne, rapide și optimizate pentru dispozitive mobile — special pentru afaceri locale care vor să crească.</p>
+        <div class="hero-price">
+          <span class="amount">400 lei</span>
+          <span class="label">— site complet, gata de publicat</span>
+        </div>
+        <div class="hero-actions">
+          <a href="tel:0759357054" class="btn-primary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.49 12a19.79 19.79 0 01-3.07-8.67A2 2 0 013.4 1.2h3a2 2 0 012 1.72c.12.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L7.91 9.09a16 16 0 006 6l1.45-1.45a2 2 0 012.11-.45c.91.34 1.85.58 2.81.7a2 2 0 011.72 2.03z"/></svg>
+            Sună acum
+          </a>
+          <a href="#contact" class="btn-secondary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            Cere ofertă
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="mockup-wrap">
+          <div class="mockup-glow"></div>
+          <div class="browser-mockup">
+            <div class="browser-bar">
+              <div class="browser-dot"></div>
+              <div class="browser-dot"></div>
+              <div class="browser-dot"></div>
+              <div class="browser-url">🔒 afacereatamea.ro</div>
+            </div>
+            <div class="browser-content">
+              <div class="mock-header">
+                <span class="mock-logo">AFACEREA TA</span>
+              </div>
+              <div class="mock-line w80"></div>
+              <div class="mock-line w60"></div>
+              <div class="mock-line w90"></div>
+              <div class="mock-btn"></div>
+              <div class="mock-cards">
+                <div class="mock-card"></div>
+                <div class="mock-card"></div>
+                <div class="mock-card"></div>
+                <div class="mock-card"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section class="why" id="beneficii">
+    <div class="section-inner">
+      <div class="section-header center reveal">
+        <span class="section-label">De ce contează</span>
+        <h2 class="section-title">Fără site, afacerea ta e<br>invizibilă online</h2>
+        <p class="section-sub">Peste 80% din clienți caută pe Google înainte să cumpere. Dacă nu ești acolo, pierzi în favoarea concurenței.</p>
+      </div>
+
+      <div class="benefits-grid">
+        <div class="benefit-card reveal">
+          <div class="benefit-icon">🚀</div>
+          <h3>Mai mulți clienți</h3>
+          <p>Fii găsit de oamenii care caută exact ce oferi tu, chiar în zona ta.</p>
+        </div>
+        <div class="benefit-card reveal">
+          <div class="benefit-icon">🏆</div>
+          <h3>Credibilitate mai mare</h3>
+          <p>Un site profesional transmite seriozitate și câștigă încrederea clienților din prima secundă.</p>
+        </div>
+        <div class="benefit-card reveal">
+          <div class="benefit-icon">🕐</div>
+          <h3>Disponibil 24/7</h3>
+          <p>Site-ul tău lucrează non-stop. Clienții află despre tine și la miezul nopții.</p>
+        </div>
+        <div class="benefit-card reveal">
+          <div class="benefit-icon">🔍</div>
+          <h3>Vizibilitate în Google</h3>
+          <p>Apari în căutările locale atunci când potențialii clienți au nevoie de serviciile tale.</p>
+        </div>
+        <div class="benefit-card reveal">
+          <div class="benefit-icon">💼</div>
+          <h3>Imagine profesională</h3>
+          <p>Concurezi cu companiile mari și ești perceput ca o afacere serioasă și de încredere.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT YOU GET -->
+  <section id="servicii">
+    <div class="section-inner">
+      <div class="section-header center reveal">
+        <span class="section-label">Pachet complet</span>
+        <h2 class="section-title">Ce primești pentru<br>400 lei?</h2>
+        <p class="section-sub">Tot ce ai nevoie pentru a apărea profesional online, fără costuri ascunse.</p>
+      </div>
+
+      <div class="price-badge-wrap reveal">
+        <div class="price-badge">
+          <div class="big">400 lei</div>
+          <div class="small">Preț promoțional — site complet</div>
+        </div>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card reveal">
+          <div class="feature-check">✦</div>
+          <div>
+            <h3>Design modern</h3>
+            <p>Aspect vizual curat, elegant și adaptat brandului tău. Primul impact contează.</p>
+          </div>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-check">📱</div>
+          <div>
+            <h3>Adaptare mobilă completă</h3>
+            <p>Site-ul arată perfect pe telefon, tabletă și desktop — indiferent de dispozitiv.</p>
+          </div>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-check">✉</div>
+          <div>
+            <h3>Pagină de contact</h3>
+            <p>Formular de contact, telefon și hartă — clienții te găsesc ușor și pot lua legătura rapid.</p>
+          </div>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-check">🔍</div>
+          <div>
+            <h3>Optimizare SEO de bază</h3>
+            <p>Configurat corect pentru Google: titluri, meta-tag-uri și viteză de încărcare optimizată.</p>
+          </div>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-check">⚡</div>
+          <div>
+            <h3>Livrare rapidă</h3>
+            <p>Site-ul tău va fi gata în câteva zile lucrătoare, nu luni de așteptare.</p>
+          </div>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-check">🤝</div>
+          <div>
+            <h3>Suport inițial inclus</h3>
+            <p>Te ghidăm după lansare și răspundem la întrebările tale. Nu ești singur.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how" id="cum-functioneaza">
+    <div class="section-inner">
+      <div class="section-header center reveal">
+        <span class="section-label">Procesul nostru</span>
+        <h2 class="section-title">Cum funcționează?</h2>
+        <p class="section-sub">Simplu, rapid și fără bătăi de cap din partea ta. De la idee la site publicat în 4 pași.</p>
+      </div>
+
+      <div class="steps">
+        <div class="step reveal">
+          <div class="step-num">1</div>
+          <h3>Ne contactezi</h3>
+          <p>Dai un telefon sau trimiți un mesaj. Fără formulare complicate.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">2</div>
+          <h3>Discutăm</h3>
+          <p>Aflăm despre afacerea ta și ce ai nevoie. Consultația e gratuită.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">3</div>
+          <h3>Construim</h3>
+          <p>Echipa noastră creează site-ul profesional pentru tine.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">4</div>
+          <h3>Îl publicăm</h3>
+          <p>Site-ul e online și afacerea ta e vizibilă pe Google.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials" id="testimoniale">
+    <div class="section-inner">
+      <div class="section-header center reveal">
+        <span class="section-label">Ce spun clienții</span>
+        <h2 class="section-title">Rezultate reale,<br>afaceri reale</h2>
+        <p class="section-sub">Proprietarii care au ales DSIETE au obținut o prezență online profesională rapid și fără stress.</p>
+      </div>
+
+      <div class="testimonials-grid">
+        <div class="testimonial reveal">
+          <div class="stars">★★★★★</div>
+          <p>Am ezitat mult să fac un site, credeam că e complicat și scump. Cu DSIETE totul a fost simplu — în câteva zile am avut un site pe care clienții îl laudă constant.</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">AM</div>
+            <div class="author-info">
+              <div class="name">Alexandru M.</div>
+              <div class="role">Service auto, Cluj-Napoca</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial reveal">
+          <div class="stars">★★★★★</div>
+          <p>De când am site-ul, primesc solicitări săptămânal de la oameni care m-au găsit pe Google. Investiția de 400 lei s-a amortizat din primul client nou.</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">DP</div>
+            <div class="author-info">
+              <div class="name">Diana P.</div>
+              <div class="role">Cofetărie artizanală, Iași</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial reveal">
+          <div class="stars">★★★★★</div>
+          <p>Eram sceptic că poate ieși ceva bun la prețul ăsta. M-am înșelat. Site-ul arată la fel de bine ca cel al unor firme mari. Comunicarea cu echipa a fost excelentă.</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">CR</div>
+            <div class="author-info">
+              <div class="name">Cătălin R.</div>
+              <div class="role">Constructor independent, Brașov</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="section-inner">
+      <div class="reveal">
+        <span class="section-label">Hai să începem</span>
+        <h2 class="section-title">Hai să îți construim site-ul.</h2>
+        <p class="section-sub">Un simplu telefon și afacerea ta va fi online în câteva zile. Fără complicații, fără costuri ascunse.</p>
+        <a href="tel:0759357054" class="contact-phone">0759 357 054</a>
+        <br/>
+        <a href="tel:0759357054" class="btn-cta-big">
+          <svg class="sticky-phone-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.49 12a19.79 19.79 0 01-3.07-8.67A2 2 0 013.4 1.2h3a2 2 0 012 1.72c.12.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L7.91 9.09a16 16 0 006 6l1.45-1.45a2 2 0 012.11-.45c.91.34 1.85.58 2.81.7a2 2 0 011.72 2.03z"/></svg>
+          Sună acum — e gratuit
+        </a>
+        <p class="contact-sub-note">Sau trimite un mesaj WhatsApp — răspundem în câteva minute.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">D<span>SIETE</span></div>
+    <p>Creare site-uri profesionale pentru afaceri locale</p>
+    <div class="footer-divider"></div>
+    <p>Telefon: <a href="tel:0759357054">0759 357 054</a></p>
+    <p style="margin-top: 16px;">© 2025 DSIETE. Toate drepturile rezervate.</p>
+  </footer>
+
+  <!-- STICKY CTA -->
+  <a href="tel:0759357054" class="sticky-phone">
+    <span class="sticky-phone-icon">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.49 12a19.79 19.79 0 01-3.07-8.67A2 2 0 013.4 1.2h3a2 2 0 012 1.72c.12.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L7.91 9.09a16 16 0 006 6l1.45-1.45a2 2 0 012.11-.45c.91.34 1.85.58 2.81.7a2 2 0 011.72 2.03z"/></svg>
+    </span>
+    <span>Sună acum</span>
+  </a>
+
+  <script>
+    // Nav scroll shadow
+    const nav = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 80);
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    reveals.forEach(el => observer.observe(el));
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
