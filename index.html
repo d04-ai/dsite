@@ -1,955 +1,1050 @@
 <!DOCTYPE html>
-<html lang="ro">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="DSIETE – Creăm site-uri profesionale pentru afaceri locale la doar 400 lei. Sună acum: 0759 357 054." />
-  <meta name="keywords" content="creare site web, site profesional, site afaceri locale, web design Romania, 400 lei" />
-  <meta property="og:title" content="DSIETE – Site-uri profesionale pentru afaceri locale" />
-  <meta property="og:description" content="Creăm site-uri moderne, rapide și optimizate la doar 400 lei. Contactează-ne azi." />
-  <title>DSIETE – Site-uri Profesionale pentru Afaceri Locale</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --navy: #1E3A8A;
-      --navy-dark: #162d6e;
-      --blue: #3B82F6;
-      --blue-light: #60A5FA;
-      --blue-pale: #DBEAFE;
-      --white: #FFFFFF;
-      --gray-light: #F3F4F6;
-      --gray-mid: #E5E7EB;
-      --gray-text: #6B7280;
-      --gray-dark: #374151;
-      --black: #111827;
-      --font-display: 'Plus Jakarta Sans', sans-serif;
-      --font-body: 'Inter', sans-serif;
-      --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
-      --shadow-md: 0 4px 20px rgba(30,58,138,0.10);
-      --shadow-lg: 0 12px 40px rgba(30,58,138,0.16);
-      --radius: 14px;
-      --radius-sm: 8px;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: var(--font-body);
-      color: var(--black);
-      background: var(--white);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    /* ─── NAV ─── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(255,255,255,0.92);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--gray-mid);
-      padding: 0 5%;
-      display: flex; align-items: center; justify-content: space-between;
-      height: 64px;
-      transition: box-shadow 0.3s;
-    }
-    nav.scrolled { box-shadow: var(--shadow-md); }
-
-    .nav-logo {
-      font-family: var(--font-display);
-      font-size: 1.5rem; font-weight: 800;
-      color: var(--navy);
-      letter-spacing: -0.5px;
-      text-decoration: none;
-    }
-    .nav-logo span { color: var(--blue); }
-
-    .nav-cta {
-      background: var(--navy);
-      color: var(--white);
-      padding: 10px 22px;
-      border-radius: 50px;
-      font-weight: 600; font-size: 0.9rem;
-      text-decoration: none;
-      transition: background 0.2s, transform 0.2s;
-      white-space: nowrap;
-    }
-    .nav-cta:hover { background: var(--blue); transform: translateY(-1px); }
-
-    /* ─── HERO ─── */
-    .hero {
-      min-height: 100vh;
-      background: linear-gradient(145deg, var(--navy) 0%, #1a4db8 55%, #2563EB 100%);
-      display: flex; align-items: center;
-      padding: 100px 5% 80px;
-      position: relative; overflow: hidden;
-    }
-
-    /* Grid overlay */
-    .hero::before {
-      content: '';
-      position: absolute; inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
-      background-size: 60px 60px;
-      pointer-events: none;
-    }
-
-    /* Glow blobs */
-    .hero::after {
-      content: '';
-      position: absolute;
-      width: 600px; height: 600px;
-      background: radial-gradient(circle, rgba(96,165,250,0.25) 0%, transparent 70%);
-      top: -100px; right: -100px;
-      pointer-events: none;
-    }
-
-    .hero-inner {
-      max-width: 1200px; margin: 0 auto; width: 100%;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
-      position: relative; z-index: 1;
-    }
-
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.2);
-      color: var(--blue-light);
-      padding: 6px 16px; border-radius: 50px;
-      font-size: 0.82rem; font-weight: 600; letter-spacing: 0.5px;
-      margin-bottom: 24px;
-    }
-    .hero-badge::before {
-      content: '';
-      display: inline-block; width: 7px; height: 7px;
-      background: #4ADE80; border-radius: 50%;
-      animation: pulse-dot 2s infinite;
-    }
-
-    @keyframes pulse-dot {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(1.4); }
-    }
-
-    .hero h1 {
-      font-family: var(--font-display);
-      font-size: clamp(2.4rem, 4.5vw, 3.8rem);
-      font-weight: 800;
-      color: var(--white);
-      line-height: 1.1;
-      letter-spacing: -1.5px;
-      margin-bottom: 20px;
-    }
-
-    .hero h1 em {
-      font-style: normal;
-      background: linear-gradient(90deg, #93C5FD, #60A5FA);
-      -webkit-background-clip: text; background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero-sub {
-      color: rgba(255,255,255,0.75);
-      font-size: 1.15rem; line-height: 1.7;
-      margin-bottom: 36px;
-      max-width: 500px;
-    }
-
-    .hero-price {
-      display: inline-flex; align-items: baseline; gap: 6px;
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.18);
-      border-radius: 10px;
-      padding: 10px 18px;
-      margin-bottom: 32px;
-    }
-    .hero-price .amount {
-      font-family: var(--font-display);
-      font-size: 2rem; font-weight: 800;
-      color: #FDE68A;
-    }
-    .hero-price .label { color: rgba(255,255,255,0.65); font-size: 0.9rem; }
-
-    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
-
-    .btn-primary {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--white);
-      color: var(--navy);
-      padding: 15px 30px; border-radius: 50px;
-      font-weight: 700; font-size: 1rem;
-      text-decoration: none;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
-      transition: all 0.25s;
-    }
-    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(0,0,0,0.3); }
-
-    .btn-secondary {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(255,255,255,0.1);
-      border: 1.5px solid rgba(255,255,255,0.35);
-      color: var(--white);
-      padding: 15px 30px; border-radius: 50px;
-      font-weight: 600; font-size: 1rem;
-      text-decoration: none;
-      transition: all 0.25s;
-    }
-    .btn-secondary:hover { background: rgba(255,255,255,0.18); transform: translateY(-3px); }
-
-    /* Hero phone mockup */
-    .hero-visual {
-      display: flex; justify-content: center; align-items: center;
-      position: relative;
-    }
-
-    .mockup-wrap {
-      position: relative;
-      animation: float 5s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-18px); }
-    }
-
-    .mockup-glow {
-      position: absolute; inset: -30px;
-      background: radial-gradient(circle, rgba(96,165,250,0.3) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .browser-mockup {
-      width: 340px;
-      background: var(--white);
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 30px 80px rgba(0,0,0,0.4);
-      position: relative;
-    }
-
-    .browser-bar {
-      background: #F3F4F6;
-      padding: 12px 16px;
-      display: flex; align-items: center; gap: 8px;
-      border-bottom: 1px solid var(--gray-mid);
-    }
-    .browser-dot { width: 10px; height: 10px; border-radius: 50%; }
-    .browser-dot:nth-child(1) { background: #FC6058; }
-    .browser-dot:nth-child(2) { background: #FEC02F; }
-    .browser-dot:nth-child(3) { background: #2ACA44; }
-    .browser-url {
-      flex: 1; background: var(--white);
-      border-radius: 6px; height: 24px;
-      margin-left: 8px;
-      display: flex; align-items: center; padding: 0 10px;
-      font-size: 0.72rem; color: var(--gray-text);
-    }
-
-    .browser-content {
-      padding: 20px;
-    }
-    .mock-header {
-      background: linear-gradient(135deg, var(--navy), var(--blue));
-      border-radius: 8px; height: 70px; margin-bottom: 14px;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .mock-logo { color: white; font-weight: 800; font-size: 1.1rem; font-family: var(--font-display); }
-    .mock-line { height: 10px; border-radius: 4px; background: var(--gray-mid); margin-bottom: 8px; }
-    .mock-line.w80 { width: 80%; }
-    .mock-line.w60 { width: 60%; }
-    .mock-line.w90 { width: 90%; }
-    .mock-btn {
-      margin-top: 14px; background: var(--blue);
-      height: 36px; border-radius: 20px; width: 60%;
-    }
-    .mock-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 14px; }
-    .mock-card { background: var(--gray-light); border-radius: 8px; height: 50px; }
-
-    /* ─── SECTION BASE ─── */
-    section { padding: 90px 5%; }
-
-    .section-inner { max-width: 1200px; margin: 0 auto; }
-
-    .section-label {
-      display: inline-block;
-      background: var(--blue-pale);
-      color: var(--navy);
-      padding: 4px 14px; border-radius: 50px;
-      font-size: 0.78rem; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase;
-      margin-bottom: 14px;
-    }
-
-    .section-title {
-      font-family: var(--font-display);
-      font-size: clamp(1.9rem, 3.5vw, 2.8rem);
-      font-weight: 800; color: var(--navy);
-      letter-spacing: -1px; line-height: 1.15;
-      margin-bottom: 16px;
-    }
-
-    .section-sub {
-      color: var(--gray-text);
-      font-size: 1.05rem; line-height: 1.7;
-      max-width: 560px;
-    }
-
-    .section-header { margin-bottom: 56px; }
-    .section-header.center { text-align: center; }
-    .section-header.center .section-sub { margin: 0 auto; }
-
-    /* ─── WHY SECTION ─── */
-    .why { background: var(--gray-light); }
-
-    .benefits-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 24px;
-    }
-
-    .benefit-card {
-      background: var(--white);
-      border-radius: var(--radius);
-      padding: 32px 28px;
-      box-shadow: var(--shadow-sm);
-      border: 1px solid var(--gray-mid);
-      transition: all 0.3s;
-      position: relative; overflow: hidden;
-    }
-
-    .benefit-card::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0; height: 3px;
-      background: linear-gradient(90deg, var(--navy), var(--blue));
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-
-    .benefit-card:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow-lg);
-      border-color: transparent;
-    }
-
-    .benefit-card:hover::before { opacity: 1; }
-
-    .benefit-icon {
-      width: 50px; height: 50px;
-      background: var(--blue-pale);
-      border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 18px;
-      font-size: 1.4rem;
-    }
-
-    .benefit-card h3 {
-      font-family: var(--font-display);
-      font-size: 1rem; font-weight: 700;
-      color: var(--navy); margin-bottom: 8px;
-    }
-
-    .benefit-card p { color: var(--gray-text); font-size: 0.9rem; line-height: 1.6; }
-
-    /* ─── WHAT YOU GET ─── */
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
-    }
-
-    .feature-card {
-      background: var(--white);
-      border: 1.5px solid var(--gray-mid);
-      border-radius: var(--radius);
-      padding: 30px;
-      display: flex; gap: 18px;
-      align-items: flex-start;
-      transition: all 0.3s;
-    }
-
-    .feature-card:hover {
-      border-color: var(--blue);
-      box-shadow: 0 8px 30px rgba(59,130,246,0.12);
-      transform: translateY(-3px);
-    }
-
-    .feature-check {
-      width: 40px; height: 40px; flex-shrink: 0;
-      background: linear-gradient(135deg, var(--navy), var(--blue));
-      border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      color: white; font-size: 1rem;
-    }
-
-    .feature-card h3 {
-      font-family: var(--font-display);
-      font-size: 1rem; font-weight: 700;
-      color: var(--navy); margin-bottom: 6px;
-    }
-    .feature-card p { color: var(--gray-text); font-size: 0.88rem; line-height: 1.6; }
-
-    /* Price badge */
-    .price-badge-wrap { display: flex; justify-content: center; margin-bottom: 56px; }
-    .price-badge {
-      background: linear-gradient(135deg, var(--navy), var(--blue));
-      color: white;
-      padding: 20px 50px;
-      border-radius: 100px;
-      text-align: center;
-      box-shadow: 0 10px 40px rgba(30,58,138,0.3);
-    }
-    .price-badge .big { font-size: 2.5rem; font-weight: 900; font-family: var(--font-display); letter-spacing: -1px; }
-    .price-badge .small { font-size: 0.88rem; opacity: 0.75; margin-top: 2px; }
-
-    /* ─── HOW IT WORKS ─── */
-    .how { background: var(--navy); }
-    .how .section-title { color: var(--white); }
-    .how .section-sub { color: rgba(255,255,255,0.65); }
-    .how .section-label { background: rgba(255,255,255,0.12); color: var(--blue-light); }
-
-    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0; position: relative; }
-
-    .steps::before {
-      content: '';
-      position: absolute;
-      top: 38px; left: calc(12.5% + 20px); right: calc(12.5% + 20px);
-      height: 2px;
-      background: linear-gradient(90deg, var(--blue), rgba(96,165,250,0.3));
-      pointer-events: none;
-    }
-
-    .step {
-      text-align: center;
-      padding: 20px;
-      position: relative; z-index: 1;
-    }
-
-    .step-num {
-      width: 76px; height: 76px;
-      background: linear-gradient(135deg, var(--blue), #60A5FA);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--font-display);
-      font-size: 1.6rem; font-weight: 800;
-      color: white;
-      margin: 0 auto 20px;
-      box-shadow: 0 8px 24px rgba(59,130,246,0.4);
-      position: relative;
-      border: 3px solid rgba(255,255,255,0.15);
-    }
-
-    .step h3 {
-      font-family: var(--font-display);
-      font-size: 1.05rem; font-weight: 700;
-      color: var(--white); margin-bottom: 8px;
-    }
-    .step p { color: rgba(255,255,255,0.6); font-size: 0.88rem; line-height: 1.6; }
-
-    /* ─── TESTIMONIALS ─── */
-    .testimonials { background: var(--gray-light); }
-
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 24px;
-    }
-
-    .testimonial {
-      background: var(--white);
-      border-radius: var(--radius);
-      padding: 32px;
-      box-shadow: var(--shadow-sm);
-      border: 1px solid var(--gray-mid);
-      transition: all 0.3s;
-      position: relative;
-    }
-
-    .testimonial:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
-
-    .testimonial::before {
-      content: '"';
-      position: absolute; top: 20px; right: 24px;
-      font-size: 5rem; font-family: Georgia, serif;
-      color: var(--blue-pale);
-      line-height: 1;
-      pointer-events: none;
-    }
-
-    .stars {
-      color: #F59E0B;
-      font-size: 1rem; letter-spacing: 2px;
-      margin-bottom: 14px;
-    }
-
-    .testimonial p {
-      color: var(--gray-dark);
-      font-size: 0.95rem; line-height: 1.7;
-      font-style: italic;
-      margin-bottom: 20px;
-      position: relative; z-index: 1;
-    }
-
-    .testimonial-author { display: flex; align-items: center; gap: 12px; }
-
-    .author-avatar {
-      width: 44px; height: 44px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--navy), var(--blue));
-      display: flex; align-items: center; justify-content: center;
-      color: white; font-weight: 700; font-size: 1rem;
-      font-family: var(--font-display);
-      flex-shrink: 0;
-    }
-
-    .author-info .name { font-weight: 700; font-size: 0.9rem; color: var(--navy); }
-    .author-info .role { font-size: 0.8rem; color: var(--gray-text); }
-
-    /* ─── CONTACT ─── */
-    .contact {
-      background: linear-gradient(145deg, var(--navy) 0%, #1a4db8 100%);
-      text-align: center; position: relative; overflow: hidden;
-    }
-
-    .contact::before {
-      content: '';
-      position: absolute; inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
-      background-size: 60px 60px;
-    }
-
-    .contact .section-inner { position: relative; z-index: 1; }
-    .contact .section-title { color: var(--white); }
-    .contact .section-sub { color: rgba(255,255,255,0.7); margin: 0 auto 40px; }
-    .contact .section-label { background: rgba(255,255,255,0.12); color: var(--blue-light); }
-
-    .contact-phone {
-      font-family: var(--font-display);
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      font-weight: 900; color: white;
-      letter-spacing: -1px;
-      margin-bottom: 36px;
-      display: block;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .contact-phone:hover { color: #93C5FD; }
-
-    .btn-cta-big {
-      display: inline-flex; align-items: center; gap: 12px;
-      background: var(--white);
-      color: var(--navy);
-      padding: 20px 48px; border-radius: 100px;
-      font-family: var(--font-display);
-      font-weight: 800; font-size: 1.15rem;
-      text-decoration: none;
-      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
-      transition: all 0.3s;
-    }
-    .btn-cta-big:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
-    .btn-cta-big svg { flex-shrink: 0; }
-
-    .contact-sub-note {
-      margin-top: 20px;
-      color: rgba(255,255,255,0.5);
-      font-size: 0.85rem;
-    }
-
-    /* ─── FOOTER ─── */
-    footer {
-      background: var(--black);
-      padding: 40px 5%;
-      text-align: center;
-    }
-
-    .footer-logo {
-      font-family: var(--font-display);
-      font-size: 1.5rem; font-weight: 800;
-      color: var(--white); margin-bottom: 8px;
-    }
-    .footer-logo span { color: var(--blue); }
-
-    footer p { color: rgba(255,255,255,0.4); font-size: 0.85rem; margin-bottom: 4px; }
-    footer a { color: var(--blue-light); text-decoration: none; }
-    footer a:hover { text-decoration: underline; }
-
-    .footer-divider { margin: 20px auto; width: 60px; height: 1px; background: rgba(255,255,255,0.1); }
-
-    /* ─── STICKY PHONE ─── */
-    .sticky-phone {
-      position: fixed; bottom: 24px; right: 24px; z-index: 200;
-      display: flex; align-items: center; gap: 12px;
-      background: var(--blue);
-      color: white;
-      padding: 14px 22px; border-radius: 100px;
-      font-weight: 700; font-size: 0.95rem;
-      text-decoration: none;
-      box-shadow: 0 8px 30px rgba(59,130,246,0.45);
-      transition: all 0.3s;
-      animation: slide-in 0.6s 1s ease-out both;
-    }
-
-    .sticky-phone:hover { background: var(--navy); transform: translateY(-3px); }
-
-    @keyframes slide-in {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .sticky-phone-icon { animation: ring 3s 2s infinite; }
-    @keyframes ring {
-      0%, 90%, 100% { transform: rotate(0deg); }
-      92% { transform: rotate(-15deg); }
-      96% { transform: rotate(15deg); }
-    }
-
-    /* ─── SCROLL REVEAL ─── */
-    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-
-    /* ─── RESPONSIVE ─── */
-    @media (max-width: 900px) {
-      .hero-inner { grid-template-columns: 1fr; text-align: center; }
-      .hero-sub { margin: 0 auto 36px; }
-      .hero-actions { justify-content: center; }
-      .hero-visual { margin-top: 20px; }
-      .steps::before { display: none; }
-    }
-
-    @media (max-width: 600px) {
-      section { padding: 70px 5%; }
-      .browser-mockup { width: 280px; }
-      .hero-price { display: inline-flex; }
-      .sticky-phone span { display: none; }
-      .sticky-phone { padding: 14px; border-radius: 50%; width: 56px; height: 56px; justify-content: center; }
-      .btn-cta-big { padding: 16px 32px; font-size: 1rem; }
-      .steps { grid-template-columns: 1fr 1fr; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .mockup-wrap { animation: none; }
-      .reveal { opacity: 1; transform: none; }
-      .sticky-phone-icon { animation: none; }
-    }
-  </style>
+<html lang="ro"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DSIETE — Site-uri profesionale pentru afaceri locale, 400 lei</title>
+<meta name="description" content="DSIETE construiește site-uri moderne, rapide și optimizate pentru afaceri locale. Preț fix: 400 lei. Sună la 0759 357 054.">
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+<link href="index2_files/css2_2vYt.css" rel="stylesheet">
+<style>
+  /* =========== RESET + TOKENS =========== */
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --bg:#F4EFE6;          /* warm cream */
+    --bg-2:#EDE6D8;        /* deeper cream */
+    --ink:#0E0E0C;         /* near black */
+    --ink-2:#1A1A17;
+    --ink-mute:#4A4A45;
+    --line:#1A1A17;
+    --lime:#D8FF3E;        /* electric lime accent */
+    --terra:#E85C2B;       /* burnt terracotta */
+    --paper:#FFFCF6;
+    --maxw:1320px;
+  }
+  html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+  body{
+    font-family:'Geist',system-ui,sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    font-size:17px;
+    line-height:1.55;
+    overflow-x:hidden;
+    cursor:default;
+  }
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  ::selection{background:var(--lime);color:var(--ink)}
+  .serif{font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-.01em}
+  .mono{font-family:'JetBrains Mono',monospace;font-weight:500;letter-spacing:-.01em}
+
+  /* =========== LAYOUT =========== */
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  section{position:relative}
+  .divider{border-top:1px solid var(--ink);width:100%}
+
+  /* =========== NAV =========== */
+  nav.top{
+    position:sticky;top:0;z-index:50;
+    background:var(--bg);
+    border-bottom:1px solid var(--ink);
+    backdrop-filter:saturate(140%);
+  }
+  nav.top .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{font-family:'Instrument Serif',serif;font-size:26px;letter-spacing:-.02em;display:flex;align-items:center;gap:8px}
+  .logo .dot{width:9px;height:9px;background:var(--terra);border-radius:50%;display:inline-block;animation:pulse 2.4s ease-in-out infinite}
+  @keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.4);opacity:.55}}
+  .nav-links{display:flex;gap:28px;font-size:14px}
+  .nav-links a{position:relative;padding:6px 0;transition:color .25s}
+  .nav-links a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--ink);transition:width .35s ease}
+  .nav-links a:hover::after{width:100%}
+  .nav-cta{
+    background:var(--ink);color:var(--paper);
+    padding:10px 18px;border-radius:999px;font-size:13px;font-weight:500;
+    display:flex;align-items:center;gap:8px;
+    transition:transform .25s ease, background .25s ease;
+    border:1px solid var(--ink);
+  }
+  .nav-cta:hover{background:var(--lime);color:var(--ink);transform:translateY(-1px)}
+  @media(max-width:760px){.nav-links{display:none}}
+
+  /* =========== MARQUEE TICKER =========== */
+  .ticker{
+    background:var(--ink);color:var(--paper);
+    border-bottom:1px solid var(--ink);
+    overflow:hidden;padding:10px 0;
+  }
+  .ticker-track{
+    display:flex;gap:42px;white-space:nowrap;
+    animation:scroll 38s linear infinite;
+    font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:.04em;text-transform:uppercase;
+  }
+  .ticker span{display:inline-flex;align-items:center;gap:14px;opacity:.9}
+  .ticker span::after{content:"✦";color:var(--lime);font-size:10px}
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* =========== HERO =========== */
+  .hero{padding:80px 0 90px;position:relative}
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:end}
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:8px 14px;border:1px solid var(--ink);border-radius:999px;background:var(--paper)}
+  .eyebrow .badge-dot{width:6px;height:6px;background:var(--terra);border-radius:50%}
+  h1.display{
+    font-family:'Instrument Serif',serif;font-weight:400;
+    font-size:clamp(54px,8.5vw,128px);line-height:.92;letter-spacing:-.035em;
+    margin:28px 0 24px;
+  }
+  h1.display em{font-style:italic;color:var(--terra);position:relative;display:inline-block}
+  h1.display em::after{
+    content:"";position:absolute;left:0;right:0;bottom:8px;height:6px;
+    background:var(--lime);z-index:-1;border-radius:2px;
+    transform:scaleX(0);transform-origin:left;
+    animation:hl 1.2s .6s cubic-bezier(.7,0,.3,1) forwards;
+  }
+  @keyframes hl{to{transform:scaleX(1)}}
+  .hero-lede{font-size:19px;color:var(--ink-mute);max-width:520px;line-height:1.5}
+  .hero-cta{display:flex;gap:14px;margin-top:36px;flex-wrap:wrap}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:18px 28px;border-radius:999px;
+    font-size:15px;font-weight:500;
+    border:1px solid var(--ink);
+    transition:transform .25s ease, background .3s ease, color .3s ease;
+    cursor:pointer;
+  }
+  .btn-dark{background:var(--ink);color:var(--paper)}
+  .btn-dark:hover{background:var(--lime);color:var(--ink);transform:translateY(-2px)}
+  .btn-light{background:transparent;color:var(--ink)}
+  .btn-light:hover{background:var(--ink);color:var(--paper);transform:translateY(-2px)}
+  .btn-lime{background:var(--lime);color:var(--ink);border-color:var(--ink)}
+  .btn-lime:hover{background:var(--ink);color:var(--lime);transform:translateY(-2px)}
+  .hero-meta{display:flex;gap:36px;margin-top:46px;padding-top:26px;border-top:1px solid var(--ink);flex-wrap:wrap}
+  .meta-item .v{font-family:'Instrument Serif',serif;font-size:42px;line-height:1;letter-spacing:-.02em}
+  .meta-item .v em{color:var(--terra);font-style:italic}
+  .meta-item .k{font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-mute);margin-top:6px}
+
+  /* Hero visual: layered editorial card */
+  .hero-art{position:relative;height:560px}
+  .price-tag{
+    position:absolute;top:0;right:0;
+    background:var(--lime);border:1px solid var(--ink);
+    border-radius:999px;
+    padding:22px 30px;
+    transform:rotate(8deg);
+    box-shadow:6px 6px 0 var(--ink);
+    z-index:3;
+    animation:bob 4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:rotate(8deg) translateY(0)}50%{transform:rotate(8deg) translateY(-8px)}}
+  .price-tag .num{font-family:'Instrument Serif',serif;font-size:54px;line-height:1;letter-spacing:-.02em}
+  .price-tag .lbl{font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.06em;margin-top:4px}
+  .browser{
+    position:absolute;left:0;bottom:0;width:96%;
+    background:var(--paper);border:1px solid var(--ink);
+    border-radius:14px;overflow:hidden;
+    box-shadow:14px 14px 0 var(--ink);
+    transition:transform .5s ease;
+  }
+  .browser:hover{transform:translate(-3px,-3px)}
+  .browser-bar{display:flex;align-items:center;gap:8px;padding:12px 14px;border-bottom:1px solid var(--ink);background:var(--bg-2)}
+  .browser-bar .b{width:10px;height:10px;border-radius:50%;border:1px solid var(--ink)}
+  .browser-bar .b:nth-child(1){background:var(--terra)}
+  .browser-bar .b:nth-child(2){background:var(--lime)}
+  .browser-bar .b:nth-child(3){background:var(--paper)}
+  .browser-bar .url{flex:1;text-align:center;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-mute)}
+  .browser-body{padding:28px 26px 30px;min-height:340px;position:relative}
+  .browser-body h3{font-family:'Instrument Serif',serif;font-size:36px;line-height:1;letter-spacing:-.02em}
+  .browser-body .sub{font-size:13px;color:var(--ink-mute);margin-top:6px}
+  .mock-rows{display:flex;flex-direction:column;gap:8px;margin-top:18px}
+  .mock-rows i{display:block;height:8px;background:var(--bg-2);border-radius:4px}
+  .mock-rows i:nth-child(1){width:78%}
+  .mock-rows i:nth-child(2){width:62%}
+  .mock-rows i:nth-child(3){width:88%}
+  .mock-pill{display:inline-block;margin-top:18px;background:var(--ink);color:var(--paper);padding:10px 18px;border-radius:999px;font-size:12px;font-family:'JetBrains Mono',monospace}
+  .mock-cards{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
+  .mock-cards div{height:54px;background:var(--bg-2);border-radius:8px;border:1px solid var(--ink)}
+  .mock-cards div:nth-child(2){background:var(--lime)}
+  .floating-tag{
+    position:absolute;left:-10px;top:60px;z-index:2;
+    background:var(--terra);color:var(--paper);
+    border:1px solid var(--ink);border-radius:999px;
+    padding:10px 18px;font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.08em;
+    box-shadow:4px 4px 0 var(--ink);
+    animation:bob2 5s ease-in-out infinite;
+  }
+  @keyframes bob2{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+  @media(max-width:980px){
+    .hero-grid{grid-template-columns:1fr;gap:60px}
+    .hero-art{height:480px}
+  }
+
+  /* =========== SECTION HEADERS =========== */
+  .sec-pad{padding:120px 0}
+  .sec-head{display:grid;grid-template-columns:auto 1fr;gap:60px;margin-bottom:64px;align-items:end}
+  .sec-num{font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);writing-mode:vertical-rl;transform:rotate(180deg)}
+  .sec-title{font-family:'Instrument Serif',serif;font-size:clamp(44px,6vw,84px);line-height:.95;letter-spacing:-.025em}
+  .sec-title em{font-style:italic;color:var(--terra)}
+  .sec-sub{font-size:18px;color:var(--ink-mute);max-width:560px;margin-top:18px}
+
+  @media(max-width:760px){.sec-head{grid-template-columns:1fr;gap:14px}.sec-num{writing-mode:horizontal-tb;transform:none}}
+
+  /* =========== COMPARE: WITH vs WITHOUT =========== */
+  .compare{background:var(--ink);color:var(--paper)}
+  .compare .sec-num,.compare .sec-sub{color:#9c9c95}
+  .compare .sec-title em{color:var(--lime)}
+  .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--paper);border-radius:18px;overflow:hidden}
+  .cmp{padding:48px 42px;position:relative}
+  .cmp.bad{background:#1A1A17}
+  .cmp.good{background:var(--lime);color:var(--ink)}
+  .cmp h3{font-family:'Instrument Serif',serif;font-size:38px;letter-spacing:-.02em;margin-bottom:6px}
+  .cmp .tag{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;opacity:.7}
+  .cmp ul{list-style:none;margin-top:30px;display:flex;flex-direction:column;gap:14px}
+  .cmp li{display:flex;gap:14px;align-items:flex-start;font-size:16px;line-height:1.45}
+  .cmp li svg{flex-shrink:0;margin-top:3px}
+  .cmp.good li{font-weight:500}
+  @media(max-width:760px){.compare-grid{grid-template-columns:1fr}.cmp{padding:36px 28px}}
+
+  /* =========== BENEFITS =========== */
+  .benefits-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--ink);border-left:1px solid var(--ink)}
+  .b-card{border-right:1px solid var(--ink);border-bottom:1px solid var(--ink);padding:36px 32px;background:var(--bg);transition:background .3s ease, transform .3s ease;position:relative;overflow:hidden}
+  .b-card:not(.dark):hover{background:var(--lime)}
+  .b-card.dark:hover{background:#1A1A17}
+  .b-card.dark:hover p{color:#dcdcd4}
+  .b-card.dark:hover .b-icon{transform:rotate(-12deg) scale(1.08);background:var(--lime);color:var(--ink)}
+  .b-card .b-num{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--ink-mute);letter-spacing:.08em}
+  .b-card h3{font-family:'Instrument Serif',serif;font-size:30px;margin:18px 0 10px;letter-spacing:-.02em;line-height:1}
+  .b-card p{color:var(--ink-mute);font-size:15px;line-height:1.5;transition:color .3s ease}
+  .b-card:hover p{color:var(--ink)}
+  .b-icon{width:46px;height:46px;border:1px solid var(--ink);border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--paper);transition:transform .35s ease}
+  .b-card:hover .b-icon{transform:rotate(-12deg) scale(1.08);background:var(--ink);color:var(--lime)}
+  .b-icon svg{width:22px;height:22px}
+  @media(max-width:980px){.benefits-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:600px){.benefits-grid{grid-template-columns:1fr}}
+
+  /* =========== WHAT YOU GET =========== */
+  .package{background:var(--bg-2)}
+  .pkg-grid{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:start}
+  .pkg-list{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--ink)}
+  .pkg-item{display:grid;grid-template-columns:60px 1fr auto;align-items:center;gap:24px;padding:24px 6px;border-bottom:1px solid var(--ink);transition:padding-left .3s ease, background .3s ease}
+  .pkg-item:hover{padding-left:18px;background:rgba(216,255,62,.25)}
+  .pkg-item .n{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--ink-mute)}
+  .pkg-item .t{font-family:'Instrument Serif',serif;font-size:28px;letter-spacing:-.02em;line-height:1.05}
+  .pkg-item .t span{display:block;font-family:'Geist',sans-serif;font-size:14px;color:var(--ink-mute);margin-top:4px;letter-spacing:0}
+  .pkg-item .ar{width:36px;height:36px;border:1px solid var(--ink);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:transform .3s ease, background .3s ease}
+  .pkg-item:hover .ar{background:var(--ink);color:var(--lime);transform:rotate(-45deg)}
+  .pkg-side{position:sticky;top:100px;background:var(--ink);color:var(--paper);border-radius:18px;padding:42px 36px;border:1px solid var(--ink);overflow:hidden}
+  .pkg-side .ribbon{position:absolute;top:18px;right:-36px;background:var(--terra);color:var(--paper);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:6px 40px;transform:rotate(45deg)}
+  .pkg-side .lbl{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#a9a9a2}
+  .pkg-side .price{font-family:'Instrument Serif',serif;font-size:110px;line-height:.95;letter-spacing:-.04em;margin-top:8px}
+  .pkg-side .price em{color:var(--lime);font-style:italic}
+  .pkg-side .small{color:#c9c9c2;font-size:14px;margin-top:6px}
+  .pkg-side .incl{margin-top:28px;padding-top:24px;border-top:1px solid #2a2a25;display:flex;flex-direction:column;gap:10px;font-size:14px}
+  .pkg-side .incl div{display:flex;align-items:center;gap:10px;color:#dcdcd4}
+  .pkg-side .incl div::before{content:"";width:5px;height:5px;background:var(--lime);border-radius:50%}
+  .pkg-side .cta{margin-top:32px;width:100%;justify-content:center;display:inline-flex}
+  @media(max-width:980px){.pkg-grid{grid-template-columns:1fr}.pkg-side{position:static}}
+
+  /* =========== PORTFOLIO =========== */
+  .portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .work{
+    position:relative;border:1px solid var(--ink);border-radius:14px;overflow:hidden;
+    aspect-ratio:4/3;cursor:pointer;
+    transition:transform .4s cubic-bezier(.7,0,.3,1);
+  }
+  .work:hover{transform:translateY(-6px)}
+  .work .shot{position:absolute;inset:0;display:flex;flex-direction:column;padding:20px;transition:transform .5s ease}
+  .work-bar{display:flex;gap:5px;margin-bottom:10px}
+  .work-bar i{width:7px;height:7px;border-radius:50%;border:1px solid var(--ink)}
+  .work-bar i:nth-child(1){background:var(--terra)}
+  .work-bar i:nth-child(2){background:var(--lime)}
+  .work-pretitle{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-mute);letter-spacing:.08em;text-transform:uppercase}
+  .work-title{font-family:'Instrument Serif',serif;font-size:32px;line-height:1;letter-spacing:-.02em;margin-top:8px}
+  .work-lines{margin-top:14px;display:flex;flex-direction:column;gap:6px}
+  .work-lines b{display:block;height:5px;border-radius:3px}
+  .work-cards{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:auto}
+  .work-cards div{aspect-ratio:1;border-radius:6px;border:1px solid var(--ink)}
+  .work .overlay{
+    position:absolute;inset:0;background:var(--ink);color:var(--paper);
+    display:flex;flex-direction:column;justify-content:flex-end;padding:24px;
+    opacity:0;transition:opacity .35s ease;
+  }
+  .work:hover .overlay{opacity:1}
+  .work .overlay .cat{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;color:var(--lime);text-transform:uppercase}
+  .work .overlay .nm{font-family:'Instrument Serif',serif;font-size:34px;letter-spacing:-.02em;margin-top:8px;line-height:1}
+  .work .overlay .desc{font-size:14px;color:#c4c4bd;margin-top:8px}
+  /* Variants */
+  .w1 .shot{background:var(--paper)} .w1 .work-lines b:nth-child(1){background:#e0d8c8;width:75%} .w1 .work-lines b:nth-child(2){background:#e0d8c8;width:55%} .w1 .work-cards div:nth-child(1){background:var(--terra)} .w1 .work-cards div:nth-child(2){background:#e0d8c8}
+  .w2 .shot{background:#1A1A17;color:var(--paper)} .w2 .work-pretitle{color:#888} .w2 .work-lines b:nth-child(1){background:#333;width:80%} .w2 .work-lines b:nth-child(2){background:#333;width:60%} .w2 .work-cards div:nth-child(1){background:var(--lime)} .w2 .work-cards div:nth-child(2){background:#333;border-color:#444}
+  .w3 .shot{background:var(--lime)} .w3 .work-lines b:nth-child(1){background:var(--ink);width:70%} .w3 .work-lines b:nth-child(2){background:var(--ink);width:50%} .w3 .work-cards div:nth-child(1){background:var(--paper)} .w3 .work-cards div:nth-child(2){background:var(--ink)}
+  .w4 .shot{background:var(--terra);color:var(--paper)} .w4 .work-pretitle{color:#ffd9c4} .w4 .work-lines b:nth-child(1){background:#fff;width:65%} .w4 .work-lines b:nth-child(2){background:#fff;width:75%} .w4 .work-cards div:nth-child(1){background:#fff} .w4 .work-cards div:nth-child(2){background:var(--ink);border-color:var(--paper)}
+  .w5 .shot{background:#fff} .w5 .work-lines b:nth-child(1){background:#eee;width:85%} .w5 .work-lines b:nth-child(2){background:#eee;width:48%} .w5 .work-cards div:nth-child(1){background:var(--ink)} .w5 .work-cards div:nth-child(2){background:var(--lime)}
+  .w6 .shot{background:var(--bg-2)} .w6 .work-lines b:nth-child(1){background:var(--ink);width:60%} .w6 .work-lines b:nth-child(2){background:var(--ink);width:78%} .w6 .work-cards div:nth-child(1){background:var(--terra)} .w6 .work-cards div:nth-child(2){background:var(--ink)}
+  @media(max-width:980px){.portfolio-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:600px){.portfolio-grid{grid-template-columns:1fr}}
+
+  /* =========== STEPS =========== */
+  .steps{background:var(--ink);color:var(--paper)}
+  .steps .sec-num,.steps .sec-sub{color:#9c9c95}
+  .steps .sec-title em{color:var(--lime)}
+  .step-list{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--paper)}
+  .step{padding:42px 28px;border-right:1px solid var(--paper);position:relative;transition:background .35s ease}
+  .step:last-child{border-right:none}
+  .step:hover{background:#1A1A17}
+  .step .n{font-family:'Instrument Serif',serif;font-size:88px;line-height:1;color:var(--lime);font-style:italic;letter-spacing:-.04em}
+  .step h3{font-family:'Instrument Serif',serif;font-size:30px;margin-top:16px;letter-spacing:-.02em;line-height:1}
+  .step p{color:#c4c4bd;margin-top:8px;font-size:15px}
+  @media(max-width:980px){.step-list{grid-template-columns:repeat(2,1fr)}.step:nth-child(2){border-right:none}.step:nth-child(1),.step:nth-child(2){border-bottom:1px solid var(--paper)}}
+  @media(max-width:600px){.step-list{grid-template-columns:1fr}.step{border-right:none;border-bottom:1px solid var(--paper)}.step:last-child{border-bottom:none}}
+
+  /* =========== TESTIMONIALS =========== */
+  .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .testi{background:var(--paper);border:1px solid var(--ink);border-radius:14px;padding:32px 30px;transition:transform .35s ease, box-shadow .35s ease;display:flex;flex-direction:column;gap:18px}
+  .testi:hover{transform:translateY(-6px);box-shadow:8px 8px 0 var(--ink)}
+  .stars{color:var(--terra);font-size:18px;letter-spacing:2px}
+  .testi blockquote{font-family:'Instrument Serif',serif;font-size:22px;line-height:1.3;letter-spacing:-.015em;color:var(--ink)}
+  .testi-author{display:flex;align-items:center;gap:14px;margin-top:auto;padding-top:18px;border-top:1px solid var(--ink)}
+  .avatar{width:46px;height:46px;border-radius:50%;background:var(--lime);border:1px solid var(--ink);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600}
+  .testi-author .nm{font-weight:500;font-size:14px}
+  .testi-author .rl{font-size:12px;color:var(--ink-mute);font-family:'JetBrains Mono',monospace}
+  @media(max-width:980px){.testi-grid{grid-template-columns:1fr;gap:18px}}
+
+  /* =========== FAQ =========== */
+  .faq-wrap{max-width:880px;margin:0 auto;border-top:1px solid var(--ink)}
+  .faq{border-bottom:1px solid var(--ink);padding:22px 6px;cursor:pointer;transition:padding .3s ease}
+  .faq:hover{padding-left:14px}
+  .faq summary{
+    list-style:none;display:flex;justify-content:space-between;align-items:center;gap:24px;
+    font-family:'Instrument Serif',serif;font-size:26px;letter-spacing:-.015em;line-height:1.2;
+  }
+  .faq summary::-webkit-details-marker{display:none}
+  .faq .ico{width:38px;height:38px;border:1px solid var(--ink);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .35s ease, background .3s ease}
+  .faq[open] .ico{transform:rotate(45deg);background:var(--lime)}
+  .faq .ans{padding-top:14px;color:var(--ink-mute);font-size:16px;max-width:720px;line-height:1.55}
+
+  /* =========== CONTACT =========== */
+  .contact{background:var(--ink);color:var(--paper)}
+  .contact .sec-num,.contact .sec-sub{color:#9c9c95}
+  .contact .sec-title em{color:var(--lime)}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+  .contact-side h3{font-family:'Instrument Serif',serif;font-size:36px;letter-spacing:-.02em}
+  .contact-side .row{display:flex;gap:18px;align-items:center;padding:22px 0;border-bottom:1px solid #2a2a25}
+  .contact-side .row .ic{width:48px;height:48px;border:1px solid var(--paper);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .contact-side .row .k{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#9c9c95}
+  .contact-side .row .v{font-family:'Instrument Serif',serif;font-size:28px;letter-spacing:-.015em;color:var(--paper);transition:color .25s ease}
+  .contact-side .row:hover .v{color:var(--lime)}
+  .form{background:var(--paper);color:var(--ink);border-radius:18px;padding:38px 34px;border:1px solid var(--paper)}
+  .form .lbl{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:6px;display:block}
+  .field{margin-bottom:20px}
+  .input,.textarea{
+    width:100%;padding:14px 16px;border:1px solid var(--ink);border-radius:10px;
+    font-family:'Geist',sans-serif;font-size:15px;background:var(--bg);
+    transition:border-color .25s ease, background .25s ease;
+    outline:none;color:var(--ink);
+  }
+  .input:focus,.textarea:focus{background:var(--paper);border-color:var(--terra);box-shadow:0 0 0 4px rgba(232,92,43,.15)}
+  .textarea{resize:vertical;min-height:120px}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .submit{width:100%;margin-top:6px;justify-content:center;display:inline-flex;font-size:16px;padding:18px}
+  .success{display:none;background:var(--lime);border:1px solid var(--ink);border-radius:10px;padding:14px 16px;margin-top:14px;font-size:14px;font-weight:500}
+  .success.show{display:block;animation:fadeIn .4s ease}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+  @media(max-width:980px){.contact-grid{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}}
+
+  /* =========== FOOTER =========== */
+  footer{background:var(--bg);border-top:1px solid var(--ink);padding:60px 0 30px}
+  .foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;align-items:start}
+  .foot-grid h4{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:14px}
+  .foot-grid a{display:block;padding:4px 0;font-size:14px;transition:color .2s}
+  .foot-grid a:hover{color:var(--terra)}
+  .foot-tag{font-family:'Instrument Serif',serif;font-size:54px;letter-spacing:-.03em;line-height:1;margin-top:8px}
+  .foot-tag em{font-style:italic;color:var(--terra)}
+  .foot-bottom{margin-top:50px;padding-top:24px;border-top:1px solid var(--ink);display:flex;justify-content:space-between;align-items:center;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--ink-mute);flex-wrap:wrap;gap:10px}
+  @media(max-width:760px){.foot-grid{grid-template-columns:1fr 1fr}}
+
+  /* =========== STICKY PHONE =========== */
+  .sticky-phone{
+    position:fixed;bottom:24px;right:24px;z-index:60;
+    background:var(--lime);color:var(--ink);
+    border:1px solid var(--ink);
+    padding:16px 22px;border-radius:999px;
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:14px;font-weight:600;
+    box-shadow:4px 4px 0 var(--ink);
+    transition:transform .25s ease, background .3s ease;
+    animation:bob 3s ease-in-out infinite;
+  }
+  .sticky-phone:hover{background:var(--ink);color:var(--lime);transform:translateY(-2px)}
+
+  /* =========== REVEAL ANIMATIONS =========== */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .9s ease, transform .9s cubic-bezier(.7,0,.3,1)}
+  .reveal.in{opacity:1;transform:translateY(0)}
+  .stagger > *{opacity:0;transform:translateY(20px);transition:opacity .7s ease, transform .7s cubic-bezier(.7,0,.3,1)}
+  .stagger.in > *{opacity:1;transform:translateY(0)}
+  .stagger.in > *:nth-child(1){transition-delay:.05s}
+  .stagger.in > *:nth-child(2){transition-delay:.12s}
+  .stagger.in > *:nth-child(3){transition-delay:.19s}
+  .stagger.in > *:nth-child(4){transition-delay:.26s}
+  .stagger.in > *:nth-child(5){transition-delay:.33s}
+  .stagger.in > *:nth-child(6){transition-delay:.4s}
+
+  /* =========== CURSOR DOT =========== */
+  .cursor-dot{
+    position:fixed;width:8px;height:8px;background:var(--terra);border-radius:50%;
+    pointer-events:none;z-index:999;
+    transform:translate(-50%,-50%);
+    transition:width .2s ease, height .2s ease, background .2s ease;
+    mix-blend-mode:multiply;
+  }
+  .cursor-dot.big{width:42px;height:42px;background:var(--lime)}
+  @media(hover:none){.cursor-dot{display:none}}
+</style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav id="navbar">
-    <a href="#" class="nav-logo">D<span>SIETE</span></a>
-    <a href="tel:0759357054" class="nav-cta">📞 0759 357 054</a>
-  </nav>
+<!-- TICKER -->
+<div class="ticker" data-testid="ticker-marquee">
+  <div class="ticker-track">
+    <span>Site complet — 400 lei</span>
+    <span>Livrare în câteva zile</span>
+    <span>Optimizat SEO</span>
+    <span>100% adaptat mobil</span>
+    <span>Fără costuri ascunse</span>
+    <span>Suport inclus</span>
+    <span>Site complet — 400 lei</span>
+    <span>Livrare în câteva zile</span>
+    <span>Optimizat SEO</span>
+    <span>100% adaptat mobil</span>
+    <span>Fără costuri ascunse</span>
+    <span>Suport inclus</span>
+  </div>
+</div>
 
-  <!-- HERO -->
-  <section class="hero" id="acasa">
-    <div class="hero-inner">
+<!-- NAV -->
+<nav class="top">
+  <div class="wrap">
+    <a href="#" class="logo" data-testid="logo">
+      <span class="dot"></span>DSIETE
+    </a>
+    <div class="nav-links">
+      <a href="#beneficii" data-testid="nav-beneficii">Beneficii</a>
+      <a href="#pachet" data-testid="nav-pachet">Pachet</a>
+      <a href="#portofoliu" data-testid="nav-portofoliu">Portofoliu</a>
+      <a href="#proces" data-testid="nav-proces">Proces</a>
+      <a href="#faq" data-testid="nav-faq">FAQ</a>
+    </div>
+    <a href="tel:0759357054" class="nav-cta" data-testid="nav-call-btn">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.49 12a19.79 19.79 0 01-3.07-8.67A2 2 0 013.4 1.2h3a2 2 0 012 1.72c.12.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L7.91 9.09a16 16 0 006 6l1.45-1.45a2 2 0 012.11-.45c.91.34 1.85.58 2.81.7a2 2 0 011.72 2.03z"></path></svg>
+      0759 357 054
+    </a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="acasa">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="reveal in">
+        <span class="eyebrow"><span class="badge-dot"></span>OFERTĂ LIMITATĂ — DOAR 7 LOCURI/LUNĂ</span>
+        <h1 class="display">Afacerea ta merită un site <em>profesionist.</em></h1>
+        <p class="hero-lede">Construim site-uri rapide, elegante și 
+optimizate Google pentru afacerile locale care vor să crească. Un singur
+ preț fix. Zero bătăi de cap.</p>
+        <div class="hero-cta">
+          <a href="tel:0759357054" class="btn btn-dark" data-testid="hero-call-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.49 12a19.79 19.79 0 01-3.07-8.67A2 2 0 013.4 1.2h3a2 2 0 012 1.72c.12.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L7.91 9.09a16 16 0 006 6l1.45-1.45a2 2 0 012.11-.45c.91.34 1.85.58 2.81.7a2 2 0 011.72 2.03z"></path></svg>
+            Sună la 0759 357 054
+          </a>
+          <a href="#contact" class="btn btn-light" data-testid="hero-offer-btn">
+            Cere ofertă →
+          </a>
+        </div>
+        <div class="hero-meta">
+          <div class="meta-item"><div class="v"><em>400</em> lei</div><div class="k">Preț fix, totul inclus</div></div>
+          <div class="meta-item"><div class="v">~5<em>zile</em></div><div class="k">De la idee la online</div></div>
+          <div class="meta-item"><div class="v">100%</div><div class="k">Mobil-friendly</div></div>
+        </div>
+      </div>
+
+      <div class="hero-art reveal in" style="transition-delay:.2s">
+        <div class="floating-tag">★ Recomandat local</div>
+        <div class="price-tag">
+          <div class="num">400 lei</div>
+          <div class="lbl">Tot inclus</div>
+        </div>
+        <div class="browser" data-testid="hero-browser-mock">
+          <div class="browser-bar">
+            <div class="b"></div><div class="b"></div><div class="b"></div>
+            <div class="url">🔒 afacereatamea.ro</div>
+          </div>
+          <div class="browser-body">
+            <span class="mono" style="font-size:11px;color:var(--ink-mute);letter-spacing:.08em;text-transform:uppercase">Acasă · Servicii · Contact</span>
+            <h3 style="margin-top:14px">Afacerea ta, online — în stilul tău.</h3>
+            <p class="sub">Site rapid, modern, ușor de găsit pe Google.</p>
+            <div class="mock-rows"><i></i><i></i><i></i></div>
+            <div class="mock-pill">→ Contactează-ne</div>
+            <div class="mock-cards"><div></div><div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARE -->
+<section class="compare sec-pad" id="beneficii">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">01 / Realitate</div>
       <div>
-        <div class="hero-badge">✦ Ofertă limitată</div>
-        <h1>Afacerea ta merită un site <em>profesionist.</em></h1>
-        <p class="hero-sub">Creăm site-uri moderne, rapide și optimizate pentru dispozitive mobile — special pentru afaceri locale care vor să crească.</p>
-        <div class="hero-price">
-          <span class="amount">400 lei</span>
-          <span class="label">— site complet, gata de publicat</span>
+        <h2 class="sec-title">Fără site — <em>invizibil.</em><br>Cu site — de neoprit.</h2>
+        <p class="sec-sub">80% din clienți caută pe Google înainte să cumpere. Dacă nu ești acolo, concurența îți ia clienții.</p>
+      </div>
+    </div>
+
+    <div class="compare-grid reveal">
+      <div class="cmp bad">
+        <div class="tag">FĂRĂ SITE</div>
+        <h3>Cum te văd clienții azi</h3>
+        <ul>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E85C2B" stroke-width="2.2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"></path></svg>Nu apari în căutările Google din zona ta.</li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E85C2B" stroke-width="2.2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"></path></svg>Clienții te compară cu firme „mai serioase".</li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E85C2B" stroke-width="2.2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"></path></svg>Răspunzi mereu la aceleași 5 întrebări la telefon.</li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E85C2B" stroke-width="2.2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"></path></svg>Pierzi clienți noaptea, în weekend, în concedii.</li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E85C2B" stroke-width="2.2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"></path></svg>Reclamele pe Facebook nu au unde să trimită oamenii.</li>
+        </ul>
+      </div>
+      <div class="cmp good">
+        <div class="tag">CU SITE DSIETE</div>
+        <h3>Cum te văd clienții mâine</h3>
+        <ul>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E0E0C" stroke-width="2.4" stroke-linecap="round"><path d="M20 6L9 17l-5-5"></path></svg>Apari pe Google când e căutat serviciul tău.</li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E0E0C" stroke-width="2.4" stroke-linecap="round"><path d="M20 6L9 17l-5-5"></path></svg>Arăți la fel de profesionist ca firmele mari.</li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E0E0C" stroke-width="2.4" stroke-linecap="round"><path d="M20 6L9 17l-5-5"></path></svg>Informațiile sunt online — răspunzi mai puțin la telefon.</li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E0E0C" stroke-width="2.4" stroke-linecap="round"><path d="M20 6L9 17l-5-5"></path></svg>Generezi cereri 24/7, chiar și când dormi.</li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E0E0C" stroke-width="2.4" stroke-linecap="round"><path d="M20 6L9 17l-5-5"></path></svg>Reclamele convertesc — pentru că au unde aduce traficul.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="sec-pad">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">02 / De ce contează</div>
+      <div>
+        <h2 class="sec-title">Cinci motive ca <em>nu mai amâni</em> hotărârea.</h2>
+        <p class="sec-sub">Un site nu mai e lux. E unealtă de vânzare. Iată cum lucrează zilnic pentru tine.</p>
+      </div>
+    </div>
+    <div class="benefits-grid reveal stagger">
+      <div class="b-card">
+        <div class="b-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5L3 22l5.5-1.5"></path><path d="M14 5l5 5"></path><path d="M21 3l-2.5 2.5L13 11l-6 6 5-1 7-7 2-2L21 3z"></path></svg></div>
+        <div class="b-num">/ 01</div>
+        <h3>Mai mulți clienți</h3>
+        <p>Fii găsit de oamenii care caută exact ce oferi tu, chiar în zona ta. Local Search înseamnă vânzări locale.</p>
+      </div>
+      <div class="b-card">
+        <div class="b-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"></circle><path d="M9 14l-2 8 5-3 5 3-2-8"></path></svg></div>
+        <div class="b-num">/ 02</div>
+        <h3>Credibilitate sporită</h3>
+        <p>Un site bine făcut transmite seriozitate. Clienții te aleg pe tine — și sunt dispuși să plătească mai mult.</p>
+      </div>
+      <div class="b-card">
+        <div class="b-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div>
+        <div class="b-num">/ 03</div>
+        <h3>Lucrează 24/7</h3>
+        <p>Site-ul nu doarme, nu pleacă în concediu, nu refuză apeluri. Informațiile tale ajung la clienți non-stop.</p>
+      </div>
+      <div class="b-card">
+        <div class="b-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div>
+        <div class="b-num">/ 04</div>
+        <h3>Vizibilitate pe Google</h3>
+        <p>Optimizat din construcție pentru căutările locale. Apari când potențialii clienți au nevoie de tine.</p>
+      </div>
+      <div class="b-card">
+        <div class="b-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"></rect><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"></path></svg></div>
+        <div class="b-num">/ 05</div>
+        <h3>Imagine profesională</h3>
+        <p>Concurezi vizual cu firmele mari, dar la cost de antreprenor local. Diferența pe care o vede orice client.</p>
+      </div>
+      <div class="b-card dark" style="background:var(--ink);color:var(--paper)">
+        <div class="b-icon" style="background:var(--lime);border-color:var(--paper)"><svg viewBox="0 0 24 24" fill="none" stroke="#0E0E0C" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+        <div class="b-num" style="color:#9c9c95">/ +1</div>
+        <h3 style="color:var(--paper)">Liniștea ta</h3>
+        <p style="color:#c4c4bd">Ne ocupăm de tot: design, texte, găzduire inițială, publicare. Tu te concentrezi pe afacere.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGE -->
+<section class="package sec-pad" id="pachet">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">03 / Pachetul</div>
+      <div>
+        <h2 class="sec-title">Tot ce primești <em>pentru 400 lei.</em></h2>
+        <p class="sec-sub">Un singur preț. Fără surprize, fără facturi ascunse, fără pachete „premium" inventate.</p>
+      </div>
+    </div>
+
+    <div class="pkg-grid">
+      <div class="pkg-list reveal stagger">
+        <div class="pkg-item">
+          <div class="n">01</div>
+          <div class="t">Design modern, croit pe brand<span>Aspect curat, elegant, croit pe identitatea afacerii tale.</span></div>
+          <div class="ar"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></div>
         </div>
-        <div class="hero-actions">
-          <a href="tel:0759357054" class="btn-primary">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.49 12a19.79 19.79 0 01-3.07-8.67A2 2 0 013.4 1.2h3a2 2 0 012 1.72c.12.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L7.91 9.09a16 16 0 006 6l1.45-1.45a2 2 0 012.11-.45c.91.34 1.85.58 2.81.7a2 2 0 011.72 2.03z"/></svg>
-            Sună acum
-          </a>
-          <a href="#contact" class="btn-secondary">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-            Cere ofertă
-          </a>
+        <div class="pkg-item">
+          <div class="n">02</div>
+          <div class="t">Adaptare mobilă completă<span>Arată perfect pe telefon, tabletă și desktop — fiecare pixel calibrat.</span></div>
+          <div class="ar"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></div>
+        </div>
+        <div class="pkg-item">
+          <div class="n">03</div>
+          <div class="t">Pagină de contact funcțională<span>Formular, telefon click-to-call, WhatsApp, hartă — toate canalele.</span></div>
+          <div class="ar"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></div>
+        </div>
+        <div class="pkg-item">
+          <div class="n">04</div>
+          <div class="t">Optimizare SEO de bază<span>Titluri, meta-tag-uri, viteză, structură — pregătit pentru Google.</span></div>
+          <div class="ar"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></div>
+        </div>
+        <div class="pkg-item">
+          <div class="n">05</div>
+          <div class="t">Livrare rapidă<span>Gata în câteva zile lucrătoare, nu luni de promisiuni amânate.</span></div>
+          <div class="ar"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></div>
+        </div>
+        <div class="pkg-item">
+          <div class="n">06</div>
+          <div class="t">Suport după lansare<span>Te ghidăm după publicare, răspundem la întrebări. Nu te lăsăm singur.</span></div>
+          <div class="ar"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></div>
         </div>
       </div>
 
-      <div class="hero-visual">
-        <div class="mockup-wrap">
-          <div class="mockup-glow"></div>
-          <div class="browser-mockup">
-            <div class="browser-bar">
-              <div class="browser-dot"></div>
-              <div class="browser-dot"></div>
-              <div class="browser-dot"></div>
-              <div class="browser-url">🔒 afacereatamea.ro</div>
-            </div>
-            <div class="browser-content">
-              <div class="mock-header">
-                <span class="mock-logo">AFACEREA TA</span>
-              </div>
-              <div class="mock-line w80"></div>
-              <div class="mock-line w60"></div>
-              <div class="mock-line w90"></div>
-              <div class="mock-btn"></div>
-              <div class="mock-cards">
-                <div class="mock-card"></div>
-                <div class="mock-card"></div>
-                <div class="mock-card"></div>
-                <div class="mock-card"></div>
-              </div>
-            </div>
-          </div>
+      <div class="pkg-side reveal" style="transition-delay:.2s">
+        <div class="ribbon">PROMO</div>
+        <div class="lbl">Preț promoțional</div>
+        <div class="price">400<em> lei</em></div>
+        <div class="small">Site complet, gata de publicat. TVA inclus.</div>
+        <div class="incl">
+          <div>Design + Dezvoltare</div>
+          <div>SEO de bază</div>
+          <div>Optimizat mobil</div>
+          <div>Formular de contact</div>
+          <div>Asistență la publicare</div>
+        </div>
+        <a href="#contact" class="btn btn-lime cta" data-testid="package-cta">Vreau site-ul meu →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="sec-pad" id="portofoliu">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">04 / Portofoliu</div>
+      <div>
+        <h2 class="sec-title">Lucrări <em>recente.</em></h2>
+        <p class="sec-sub">Afaceri locale care au trecut pragul din offline în online. Fiecare proiect — o identitate proprie.</p>
+      </div>
+    </div>
+
+    <div class="portfolio-grid reveal stagger">
+      <div class="work w1" data-testid="work-1">
+        <div class="shot">
+          <div class="work-bar"><i></i><i></i><i></i></div>
+          <div class="work-pretitle">SERVICE AUTO · CLUJ</div>
+          <div class="work-title">Marin Auto</div>
+          <div class="work-lines"><b></b><b></b></div>
+          <div class="work-cards"><div></div><div></div></div>
+        </div>
+        <div class="overlay">
+          <span class="cat">SERVICE AUTO</span>
+          <div class="nm">Marin Auto</div>
+          <div class="desc">Programări online, listă servicii, hartă cu locația atelierului.</div>
+        </div>
+      </div>
+      <div class="work w2" data-testid="work-2">
+        <div class="shot">
+          <div class="work-bar"><i></i><i></i><i></i></div>
+          <div class="work-pretitle">SALON · IAȘI</div>
+          <div class="work-title" style="color:var(--paper)">Studio Luna</div>
+          <div class="work-lines"><b></b><b></b></div>
+          <div class="work-cards"><div></div><div></div></div>
+        </div>
+        <div class="overlay">
+          <span class="cat">SALON DE FRUMUSEȚE</span>
+          <div class="nm">Studio Luna</div>
+          <div class="desc">Galerie de lucrări, prețuri transparente, rezervări prin WhatsApp.</div>
+        </div>
+      </div>
+      <div class="work w3" data-testid="work-3">
+        <div class="shot">
+          <div class="work-bar"><i></i><i></i><i></i></div>
+          <div class="work-pretitle">COFETĂRIE · BRAȘOV</div>
+          <div class="work-title">Dulce Casă</div>
+          <div class="work-lines"><b></b><b></b></div>
+          <div class="work-cards"><div></div><div></div></div>
+        </div>
+        <div class="overlay">
+          <span class="cat">COFETĂRIE ARTIZANALĂ</span>
+          <div class="nm">Dulce Casă</div>
+          <div class="desc">Catalog torturi pe ocazii, comenzi prin formular, integrare hartă.</div>
+        </div>
+      </div>
+      <div class="work w4" data-testid="work-4">
+        <div class="shot">
+          <div class="work-bar"><i></i><i></i><i></i></div>
+          <div class="work-pretitle">CONSTRUCȚII · TIMIȘOARA</div>
+          <div class="work-title" style="color:var(--paper)">Zid &amp; Lemn</div>
+          <div class="work-lines"><b></b><b></b></div>
+          <div class="work-cards"><div></div><div></div></div>
+        </div>
+        <div class="overlay">
+          <span class="cat">CONSTRUCȚII</span>
+          <div class="nm">Zid &amp; Lemn</div>
+          <div class="desc">Portofoliu proiecte, calculator estimativ, formular ofertă.</div>
+        </div>
+      </div>
+      <div class="work w5" data-testid="work-5">
+        <div class="shot">
+          <div class="work-bar"><i></i><i></i><i></i></div>
+          <div class="work-pretitle">RESTAURANT · SIBIU</div>
+          <div class="work-title">Hanul Verde</div>
+          <div class="work-lines"><b></b><b></b></div>
+          <div class="work-cards"><div></div><div></div></div>
+        </div>
+        <div class="overlay">
+          <span class="cat">RESTAURANT</span>
+          <div class="nm">Hanul Verde</div>
+          <div class="desc">Meniu interactiv, rezervări online, evenimente private.</div>
+        </div>
+      </div>
+      <div class="work w6" data-testid="work-6">
+        <div class="shot">
+          <div class="work-bar"><i></i><i></i><i></i></div>
+          <div class="work-pretitle">CABINET · BUCUREȘTI</div>
+          <div class="work-title">Dr. Popa</div>
+          <div class="work-lines"><b></b><b></b></div>
+          <div class="work-cards"><div></div><div></div></div>
+        </div>
+        <div class="overlay">
+          <span class="cat">CABINET STOMATOLOGIC</span>
+          <div class="nm">Dr. Popa</div>
+          <div class="desc">Programări online, prezentare echipă, indicații post-tratament.</div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- WHY -->
-  <section class="why" id="beneficii">
-    <div class="section-inner">
-      <div class="section-header center reveal">
-        <span class="section-label">De ce contează</span>
-        <h2 class="section-title">Fără site, afacerea ta e<br>invizibilă online</h2>
-        <p class="section-sub">Peste 80% din clienți caută pe Google înainte să cumpere. Dacă nu ești acolo, pierzi în favoarea concurenței.</p>
+<!-- STEPS -->
+<section class="steps sec-pad" id="proces">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">05 / Procesul</div>
+      <div>
+        <h2 class="sec-title">Patru pași — <em>și ești online.</em></h2>
+        <p class="sec-sub">Simplu, rapid, fără jargon tehnic. Tu îți vezi de afacere, noi ne ocupăm de restul.</p>
       </div>
+    </div>
+    <div class="step-list reveal stagger">
+      <div class="step">
+        <div class="n">01</div>
+        <h3>Ne suni</h3>
+        <p>Un singur telefon sau mesaj. Fără formulare lungi, fără tehnicalități.</p>
+      </div>
+      <div class="step">
+        <div class="n">02</div>
+        <h3>Discutăm</h3>
+        <p>Aflăm despre afacerea ta, ce vrei să transmiți, ce clienți țintești. Consultanța — gratuită.</p>
+      </div>
+      <div class="step">
+        <div class="n">03</div>
+        <h3>Construim</h3>
+        <p>Designerii și developerii noștri creează site-ul. Tu primești update-uri la fiecare etapă.</p>
+      </div>
+      <div class="step">
+        <div class="n">04</div>
+        <h3>Publicăm</h3>
+        <p>Site-ul e online, afacerea ta apare pe Google și începe să atragă clienți.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-      <div class="benefits-grid">
-        <div class="benefit-card reveal">
-          <div class="benefit-icon">🚀</div>
-          <h3>Mai mulți clienți</h3>
-          <p>Fii găsit de oamenii care caută exact ce oferi tu, chiar în zona ta.</p>
+<!-- TESTIMONIALS -->
+<section class="sec-pad">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">06 / Mărturii</div>
+      <div>
+        <h2 class="sec-title">Antreprenori care<br><em>au făcut pasul.</em></h2>
+        <p class="sec-sub">Rezultate reale. Oameni reali. Afaceri locale care nu mai sunt invizibile pe Google.</p>
+      </div>
+    </div>
+    <div class="testi-grid reveal stagger">
+      <div class="testi">
+        <div class="stars">★★★★★</div>
+        <blockquote>„Credeam că un site costă mii de euro. În câteva 
+zile aveam unul mai frumos decât al concurenței — și costa mai puțin 
+decât o reclamă pe Facebook."</blockquote>
+        <div class="testi-author">
+          <div class="avatar">AM</div>
+          <div><div class="nm">Alexandru M.</div><div class="rl">Service auto · Cluj-Napoca</div></div>
         </div>
-        <div class="benefit-card reveal">
-          <div class="benefit-icon">🏆</div>
-          <h3>Credibilitate mai mare</h3>
-          <p>Un site profesional transmite seriozitate și câștigă încrederea clienților din prima secundă.</p>
+      </div>
+      <div class="testi">
+        <div class="stars">★★★★★</div>
+        <blockquote>„De când am site, primesc cereri săptămânal de la 
+oameni care m-au găsit pe Google. Investiția s-a amortizat din primul 
+client nou."</blockquote>
+        <div class="testi-author">
+          <div class="avatar">DP</div>
+          <div><div class="nm">Diana P.</div><div class="rl">Cofetărie artizanală · Iași</div></div>
         </div>
-        <div class="benefit-card reveal">
-          <div class="benefit-icon">🕐</div>
-          <h3>Disponibil 24/7</h3>
-          <p>Site-ul tău lucrează non-stop. Clienții află despre tine și la miezul nopții.</p>
-        </div>
-        <div class="benefit-card reveal">
-          <div class="benefit-icon">🔍</div>
-          <h3>Vizibilitate în Google</h3>
-          <p>Apari în căutările locale atunci când potențialii clienți au nevoie de serviciile tale.</p>
-        </div>
-        <div class="benefit-card reveal">
-          <div class="benefit-icon">💼</div>
-          <h3>Imagine profesională</h3>
-          <p>Concurezi cu companiile mari și ești perceput ca o afacere serioasă și de încredere.</p>
+      </div>
+      <div class="testi">
+        <div class="stars">★★★★★</div>
+        <blockquote>„Eram sceptic la prețul ăsta. M-am înșelat. Site-ul 
+arată la fel de bine ca al firmelor mari. Comunicarea cu echipa — 
+impecabilă."</blockquote>
+        <div class="testi-author">
+          <div class="avatar">CR</div>
+          <div><div class="nm">Cătălin R.</div><div class="rl">Constructor independent · Brașov</div></div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- WHAT YOU GET -->
-  <section id="servicii">
-    <div class="section-inner">
-      <div class="section-header center reveal">
-        <span class="section-label">Pachet complet</span>
-        <h2 class="section-title">Ce primești pentru<br>400 lei?</h2>
-        <p class="section-sub">Tot ce ai nevoie pentru a apărea profesional online, fără costuri ascunse.</p>
-      </div>
-
-      <div class="price-badge-wrap reveal">
-        <div class="price-badge">
-          <div class="big">400 lei</div>
-          <div class="small">Preț promoțional — site complet</div>
-        </div>
-      </div>
-
-      <div class="features-grid">
-        <div class="feature-card reveal">
-          <div class="feature-check">✦</div>
-          <div>
-            <h3>Design modern</h3>
-            <p>Aspect vizual curat, elegant și adaptat brandului tău. Primul impact contează.</p>
-          </div>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-check">📱</div>
-          <div>
-            <h3>Adaptare mobilă completă</h3>
-            <p>Site-ul arată perfect pe telefon, tabletă și desktop — indiferent de dispozitiv.</p>
-          </div>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-check">✉</div>
-          <div>
-            <h3>Pagină de contact</h3>
-            <p>Formular de contact, telefon și hartă — clienții te găsesc ușor și pot lua legătura rapid.</p>
-          </div>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-check">🔍</div>
-          <div>
-            <h3>Optimizare SEO de bază</h3>
-            <p>Configurat corect pentru Google: titluri, meta-tag-uri și viteză de încărcare optimizată.</p>
-          </div>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-check">⚡</div>
-          <div>
-            <h3>Livrare rapidă</h3>
-            <p>Site-ul tău va fi gata în câteva zile lucrătoare, nu luni de așteptare.</p>
-          </div>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-check">🤝</div>
-          <div>
-            <h3>Suport inițial inclus</h3>
-            <p>Te ghidăm după lansare și răspundem la întrebările tale. Nu ești singur.</p>
-          </div>
-        </div>
+<!-- FAQ -->
+<section class="sec-pad" id="faq">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">07 / Întrebări</div>
+      <div>
+        <h2 class="sec-title">Răspunsuri scurte la<br><em>întrebări lungi.</em></h2>
+        <p class="sec-sub">Tot ce vrei să știi înainte să dai telefon. Și dacă mai ai întrebări — suni.</p>
       </div>
     </div>
-  </section>
 
-  <!-- HOW IT WORKS -->
-  <section class="how" id="cum-functioneaza">
-    <div class="section-inner">
-      <div class="section-header center reveal">
-        <span class="section-label">Procesul nostru</span>
-        <h2 class="section-title">Cum funcționează?</h2>
-        <p class="section-sub">Simplu, rapid și fără bătăi de cap din partea ta. De la idee la site publicat în 4 pași.</p>
-      </div>
+    <div class="faq-wrap reveal">
+      <details class="faq" data-testid="faq-1">
+        <summary>De ce doar 400 lei? Unde e capcana?<span class="ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></span></summary>
+        <div class="ans">Nu există capcană. Lucrăm la volum, folosim un 
+proces standardizat și nu plătim agenți de vânzări. Așa putem livra 
+calitate la un preț pe care un antreprenor local să-l plătească relaxat.</div>
+      </details>
+      <details class="faq" data-testid="faq-2">
+        <summary>Ce nu intră în pachet?<span class="ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></span></summary>
+        <div class="ans">Domeniul (~50 lei/an) și găzduirea continuă 
+(~150-300 lei/an, în funcție de plan). Te consiliem ce să alegi și te 
+ajutăm la setup — fără comision.</div>
+      </details>
+      <details class="faq" data-testid="faq-3">
+        <summary>În cât timp e gata site-ul?<span class="ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></span></summary>
+        <div class="ans">În medie 3-7 zile lucrătoare de la momentul în 
+care primim conținutul tău (logo, texte, poze). Dacă nu ai materiale, te
+ ghidăm pas cu pas.</div>
+      </details>
+      <details class="faq" data-testid="faq-4">
+        <summary>Pot modifica conținutul după lansare?<span class="ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></span></summary>
+        <div class="ans">Da. Primele modificări mici sunt gratuite în 
+primele 30 de zile. Pentru schimbări majore (pagini noi, secțiuni 
+complexe), discutăm onorariul punctual.</div>
+      </details>
+      <details class="faq" data-testid="faq-5">
+        <summary>Aveți un model de plată?<span class="ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></span></summary>
+        <div class="ans">50% avans la start, 50% la livrare, după ce vezi site-ul gata. Factură cu TVA — totul oficial.</div>
+      </details>
+      <details class="faq" data-testid="faq-6">
+        <summary>Site-ul va apărea pe Google?<span class="ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></span></summary>
+        <div class="ans">Da. Configurăm SEO de bază (titluri, 
+meta-tag-uri, structură, viteză) și trimitem site-ul către Google. 
+Poziționarea pentru cuvinte cheie competitive necesită promovare 
+suplimentară — îți spunem onest ce să aștepți.</div>
+      </details>
+    </div>
+  </div>
+</section>
 
-      <div class="steps">
-        <div class="step reveal">
-          <div class="step-num">1</div>
-          <h3>Ne contactezi</h3>
-          <p>Dai un telefon sau trimiți un mesaj. Fără formulare complicate.</p>
-        </div>
-        <div class="step reveal">
-          <div class="step-num">2</div>
-          <h3>Discutăm</h3>
-          <p>Aflăm despre afacerea ta și ce ai nevoie. Consultația e gratuită.</p>
-        </div>
-        <div class="step reveal">
-          <div class="step-num">3</div>
-          <h3>Construim</h3>
-          <p>Echipa noastră creează site-ul profesional pentru tine.</p>
-        </div>
-        <div class="step reveal">
-          <div class="step-num">4</div>
-          <h3>Îl publicăm</h3>
-          <p>Site-ul e online și afacerea ta e vizibilă pe Google.</p>
-        </div>
+<!-- CONTACT -->
+<section class="contact sec-pad" id="contact">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">08 / Hai să începem</div>
+      <div>
+        <h2 class="sec-title">Hai să-ți construim <em>site-ul.</em></h2>
+        <p class="sec-sub">Un telefon, un mesaj, un formular — alege cum e mai comod. Răspundem rapid.</p>
       </div>
     </div>
-  </section>
 
-  <!-- TESTIMONIALS -->
-  <section class="testimonials" id="testimoniale">
-    <div class="section-inner">
-      <div class="section-header center reveal">
-        <span class="section-label">Ce spun clienții</span>
-        <h2 class="section-title">Rezultate reale,<br>afaceri reale</h2>
-        <p class="section-sub">Proprietarii care au ales DSIETE au obținut o prezență online profesională rapid și fără stress.</p>
-      </div>
-
-      <div class="testimonials-grid">
-        <div class="testimonial reveal">
-          <div class="stars">★★★★★</div>
-          <p>Am ezitat mult să fac un site, credeam că e complicat și scump. Cu DSIETE totul a fost simplu — în câteva zile am avut un site pe care clienții îl laudă constant.</p>
-          <div class="testimonial-author">
-            <div class="author-avatar">AM</div>
-            <div class="author-info">
-              <div class="name">Alexandru M.</div>
-              <div class="role">Service auto, Cluj-Napoca</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="testimonial reveal">
-          <div class="stars">★★★★★</div>
-          <p>De când am site-ul, primesc solicitări săptămânal de la oameni care m-au găsit pe Google. Investiția de 400 lei s-a amortizat din primul client nou.</p>
-          <div class="testimonial-author">
-            <div class="author-avatar">DP</div>
-            <div class="author-info">
-              <div class="name">Diana P.</div>
-              <div class="role">Cofetărie artizanală, Iași</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="testimonial reveal">
-          <div class="stars">★★★★★</div>
-          <p>Eram sceptic că poate ieși ceva bun la prețul ăsta. M-am înșelat. Site-ul arată la fel de bine ca cel al unor firme mari. Comunicarea cu echipa a fost excelentă.</p>
-          <div class="testimonial-author">
-            <div class="author-avatar">CR</div>
-            <div class="author-info">
-              <div class="name">Cătălin R.</div>
-              <div class="role">Constructor independent, Brașov</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section class="contact" id="contact">
-    <div class="section-inner">
-      <div class="reveal">
-        <span class="section-label">Hai să începem</span>
-        <h2 class="section-title">Hai să îți construim site-ul.</h2>
-        <p class="section-sub">Un simplu telefon și afacerea ta va fi online în câteva zile. Fără complicații, fără costuri ascunse.</p>
-        <a href="tel:0759357054" class="contact-phone">0759 357 054</a>
-        <br/>
-        <a href="tel:0759357054" class="btn-cta-big">
-          <svg class="sticky-phone-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.49 12a19.79 19.79 0 01-3.07-8.67A2 2 0 013.4 1.2h3a2 2 0 012 1.72c.12.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L7.91 9.09a16 16 0 006 6l1.45-1.45a2 2 0 012.11-.45c.91.34 1.85.58 2.81.7a2 2 0 011.72 2.03z"/></svg>
-          Sună acum — e gratuit
+    <div class="contact-grid reveal">
+      <div class="contact-side">
+        <a href="tel:0759357054" class="row" data-testid="contact-phone-row">
+          <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.49 12a19.79 19.79 0 01-3.07-8.67A2 2 0 013.4 1.2h3a2 2 0 012 1.72c.12.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L7.91 9.09a16 16 0 006 6l1.45-1.45a2 2 0 012.11-.45c.91.34 1.85.58 2.81.7a2 2 0 011.72 2.03z"></path></svg></div>
+          <div><div class="k">Telefon</div><div class="v">0759 357 054</div></div>
         </a>
-        <p class="contact-sub-note">Sau trimite un mesaj WhatsApp — răspundem în câteva minute.</p>
+        <a href="https://wa.me/40759357054" class="row" data-testid="contact-whatsapp-row">
+          <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1s-.5-.1-.7.1c-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.4.5-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4 0 1.5 1.1 2.8 1.2 3 .1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.5-.4zM12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.3L2 22l4.8-1.5c1.5.9 3.3 1.4 5.2 1.4 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.1c-1.7 0-3.3-.5-4.7-1.3l-.3-.2-3.4 1.1 1.1-3.3-.2-.4c-.9-1.4-1.4-3.1-1.4-4.9 0-5 4-9 9-9s9 4 9 9-4.1 9-9.1 9z"></path></svg></div>
+          <div><div class="k">WhatsApp · răspuns rapid</div><div class="v">+40 759 357 054</div></div>
+        </a>
+        <a href="mailto:dragoscirja@gmail.com" class="row" data-testid="contact-email-row">
+          <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></div>
+          <div><div class="k">Email</div><div class="v">dragoscirja@gmail.com</div></div>
+        </a>
+        <div style="margin-top:32px;padding:22px 24px;border:1px solid #2a2a25;border-radius:14px;background:#161613">
+          <div class="mono" style="font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--lime)">★ GARANȚIE</div>
+          <p style="margin-top:10px;font-size:15px;color:#dcdcd4;line-height:1.5">Dacă nu ești 100% mulțumit de design în primele 7 zile, primești banii înapoi. Fără întrebări.</p>
+        </div>
+      </div>
+
+      <form class="form" id="leadForm" data-testid="contact-form">
+        <h3 style="font-family:'Instrument Serif',serif;font-size:32px;letter-spacing:-.02em;margin-bottom:6px">Cere o ofertă</h3>
+        <p style="color:var(--ink-mute);font-size:14px;margin-bottom:24px">Răspundem în maxim 2 ore lucrătoare.</p>
+        <div class="form-row">
+          <div class="field">
+            <label class="lbl" for="name">Nume</label>
+            <input class="input" type="text" id="name" name="name" required="" placeholder="Ion Popescu" data-testid="form-name">
+          </div>
+          <div class="field">
+            <label class="lbl" for="phone">Telefon</label>
+            <input class="input" type="tel" id="phone" name="phone" required="" placeholder="07XX XXX XXX" data-testid="form-phone">
+          </div>
+        </div>
+        <div class="field">
+          <label class="lbl" for="business">Domeniul afacerii</label>
+          <input class="input" type="text" id="business" name="business" placeholder="Service auto, salon, restaurant…" data-testid="form-business">
+        </div>
+        <div class="field">
+          <label class="lbl" for="msg">Mesaj (opțional)</label>
+          <textarea class="textarea" id="msg" name="msg" placeholder="Scrie ce ai nevoie de la site. Cu cât mai detaliat, cu atât mai bine." data-testid="form-message"></textarea>
+        </div>
+        <button class="btn btn-lime submit" type="submit" data-testid="form-submit">
+          Trimite cererea prin WhatsApp
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </button>
+        <div class="success" id="formSuccess" data-testid="form-success">✓ Te direcționăm către WhatsApp cu cererea completată. Verifică telefonul!</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="logo"><span class="dot"></span>DSIETE</div>
+        <div class="foot-tag">Site-uri pentru<br>afaceri <em>vii.</em></div>
+      </div>
+      <div>
+        <h4>Navigare</h4>
+        <a href="#beneficii">Beneficii</a>
+        <a href="#pachet">Pachet 400 lei</a>
+        <a href="#portofoliu">Portofoliu</a>
+        <a href="#proces">Proces</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <a href="tel:0759357054">0759 357 054</a>
+        <a href="https://wa.me/40759357054">WhatsApp</a>
+        <a href="mailto:dragoscirja@gmail.com">dragoscirja@gmail.com</a>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <a href="#">Termeni</a>
+        <a href="#">Politică cookie</a>
+        <a href="#">GDPR</a>
       </div>
     </div>
-  </section>
+    <div class="foot-bottom">
+      <div>© <span id="yr">2026</span> DSIETE · Toate drepturile rezervate</div>
+      <div>Made with ✦ — pentru afaceri locale</div>
+    </div>
+  </div>
+</footer>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-logo">D<span>SIETE</span></div>
-    <p>Creare site-uri profesionale pentru afaceri locale</p>
-    <div class="footer-divider"></div>
-    <p>Telefon: <a href="tel:0759357054">0759 357 054</a></p>
-    <p style="margin-top: 16px;">© 2025 DSIETE. Toate drepturile rezervate.</p>
-  </footer>
+<!-- STICKY PHONE -->
+<a href="tel:0759357054" class="sticky-phone" data-testid="sticky-phone">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.49 12a19.79 19.79 0 01-3.07-8.67A2 2 0 013.4 1.2h3a2 2 0 012 1.72c.12.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L7.91 9.09a16 16 0 006 6l1.45-1.45a2 2 0 012.11-.45c.91.34 1.85.58 2.81.7a2 2 0 011.72 2.03z"></path></svg>
+  Sună acum
+</a>
 
-  <!-- STICKY CTA -->
-  <a href="tel:0759357054" class="sticky-phone">
-    <span class="sticky-phone-icon">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.49 12a19.79 19.79 0 01-3.07-8.67A2 2 0 013.4 1.2h3a2 2 0 012 1.72c.12.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L7.91 9.09a16 16 0 006 6l1.45-1.45a2 2 0 012.11-.45c.91.34 1.85.58 2.81.7a2 2 0 011.72 2.03z"/></svg>
-    </span>
-    <span>Sună acum</span>
-  </a>
+<!-- CURSOR -->
+<div class="cursor-dot" id="cursor" style="left: 802.194px; top: 409.569px;"></div>
 
-  <script>
-    // Nav scroll shadow
-    const nav = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 20);
+<script>
+  // Footer year
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Cursor follow (desktop only)
+  const cursor = document.getElementById('cursor');
+  if (window.matchMedia('(hover:hover)').matches) {
+    let x=0,y=0,tx=0,ty=0;
+    window.addEventListener('mousemove', (e) => { tx=e.clientX; ty=e.clientY; });
+    const loop = () => {
+      x += (tx-x)*0.22; y += (ty-y)*0.22;
+      cursor.style.left = x+'px'; cursor.style.top = y+'px';
+      requestAnimationFrame(loop);
+    };
+    loop();
+    document.querySelectorAll('a, button, .btn, .work, .faq, .b-card, .pkg-item, .testi, [data-testid]').forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('big'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('big'));
     });
+  }
 
-    // Scroll reveal
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((e, i) => {
-        if (e.isIntersecting) {
-          setTimeout(() => e.target.classList.add('visible'), i * 80);
-          observer.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  // Form -> WhatsApp redirect
+  const form = document.getElementById('leadForm');
+  const success = document.getElementById('formSuccess');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const fd = new FormData(form);
+    const name = (fd.get('name')||'').toString().trim();
+    const phone = (fd.get('phone')||'').toString().trim();
+    const business = (fd.get('business')||'').toString().trim();
+    const msg = (fd.get('msg')||'').toString().trim();
+    const text =
+`Salut DSIETE! 👋
 
-    reveals.forEach(el => observer.observe(el));
+Doresc o ofertă pentru un site.
 
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', e => {
-        const target = document.querySelector(a.getAttribute('href'));
-        if (target) {
-          e.preventDefault();
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      });
+• Nume: ${name}
+• Telefon: ${phone}
+• Domeniu: ${business || '—'}
+• Mesaj: ${msg || '—'}
+
+Mulțumesc!`;
+    success.classList.add('show');
+    setTimeout(() => {
+      window.open('https://wa.me/40759357054?text=' + encodeURIComponent(text), '_blank');
+    }, 600);
+  });
+
+  // Smooth anchor scrolling already via CSS; close other FAQs on open (optional native)
+  document.querySelectorAll('.faq').forEach(f => {
+    f.addEventListener('toggle', () => {
+      if (f.open) {
+        document.querySelectorAll('.faq').forEach(o => { if (o!==f) o.open = false; });
+      }
     });
-  </script>
-</body>
-</html>
+  });
+</script>
+<script defer="defer" src="index2_files/v833ccba57c9e4d2798f2e76cebdd09a11778172276447_2vYt" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;7f7b0fd8732c4326aae4b9d58d5c514a&quot;,&quot;server_timing&quot;:{&quot;name&quot;:{&quot;cfCacheStatus&quot;:true,&quot;cfEdge&quot;:true,&quot;cfExtPri&quot;:true,&quot;cfL4&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfSpeedBrain&quot;:true},&quot;location_startswith&quot;:null}}" crossorigin="anonymous"></script>
+
+
+</body></html>
